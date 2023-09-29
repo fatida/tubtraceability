@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\Z004F47B\\Documents\\BSH Tub Traceability Project\\tubtraceability-backend\\dist\\logs\\.3db3c89a24cd1b0c38d1a6d21b36bc6cdb364e9d-audit.json",
+    "files": [
+        {
+            "date": 1695766755883,
+            "name": "C:\\Users\\Z004F47B\\Documents\\BSH Tub Traceability Project\\tubtraceability-backend\\dist\\logs\\application-2023-09-27-01-09.log",
+            "hash": "3445b30abd87b22d8d9ac29a76ac02a0a9343fa479f96d67d9cc946ab4efab31"
+        },
+        {
+            "date": 1695938614049,
+            "name": "C:\\Users\\Z004F47B\\Documents\\BSH Tub Traceability Project\\tubtraceability-backend\\dist\\logs\\application-2023-09-29-01-09.log",
+            "hash": "25d6ac716fb11d2ca8e55c48245f832954d47a3ab0f058640c7221826f16652f"
+        },
+        {
+            "date": 1695947347836,
+            "name": "C:\\Users\\Z004F47B\\Documents\\BSH Tub Traceability Project\\tubtraceability-backend\\dist\\logs\\application-2023-09-29-03-09.log",
+            "hash": "9119c8059b5b515dee0ec612355d64c94a27aa602187b4e5bfff6a7463cb57df"
+        }
+    ],
+    "hashType": "sha256"
+}

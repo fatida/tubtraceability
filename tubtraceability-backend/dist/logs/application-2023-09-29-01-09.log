@@ -1,0 +1,141 @@
+2023-09-28T22:03:35.594Z [tubtraceability] info: Database synchronized
+2023-09-28T22:03:35.595Z [tubtraceability] info: Initialize Data Processing Service
+2023-09-28T22:03:35.614Z [tubtraceability] info: Trying to connect Databus
+2023-09-28T22:03:35.627Z [tubtraceability] info: Connected to MQTT broker at mqtt://172.26.192.1:1883
+2023-09-28T22:03:35.628Z [tubtraceability] info: MQTT Client is connected to Databus
+2023-09-28T22:03:35.630Z [tubtraceability] info: Subscribed to topic: ie/d/j/simatic/v1/s7c1/dp/r/plc/default
+2023-09-28T22:03:36.633Z [tubtraceability] info: Data processing service is initialized for IMM2
+2023-09-28T22:03:36.635Z [tubtraceability] info: Data processing service is initialized for IMM3
+2023-09-28T22:03:36.638Z [tubtraceability] info: Data processing service is initialized for IMM4
+2023-09-28T22:03:36.639Z [tubtraceability] info: Data processing service is initialized for IMM5
+2023-09-28T22:03:36.640Z [tubtraceability] info: Data processing service is initialized for IMM6
+2023-09-28T22:03:36.641Z [tubtraceability] info: Data processing service is initialized for IMM7
+2023-09-28T22:03:36.642Z [tubtraceability] info: Data processing service is initialized for IMM8
+2023-09-28T22:03:36.642Z [tubtraceability] info: Data processing service is initialized for IMM9
+2023-09-28T22:03:36.643Z [tubtraceability] info: Data processing service is initialized for IMM10
+2023-09-28T22:03:36.656Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.659Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.661Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.664Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.667Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.668Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.670Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.673Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.676Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.678Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.680Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.683Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.684Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.686Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.688Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.689Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.692Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.694Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.695Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.695Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.696Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.699Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.701Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.703Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.704Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.705Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.705Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.707Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.709Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.711Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.712Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.712Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.713Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.713Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.714Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.714Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.716Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.717Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.718Z [tubtraceability] info: Printer configurations: 
+2023-09-28T22:03:36.719Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.719Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.719Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.720Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.720Z [tubtraceability] info: Latest uniqueid:
+2023-09-28T22:03:36.720Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.721Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.721Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.721Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.722Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.722Z [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-28T22:03:36.722Z [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-28T22:03:36.723Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.723Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:36.723Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-28T22:03:37.737Z [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:14 [tubtraceability] info: Database synchronized
+2023-09-29 01:06:14 [tubtraceability] info: Initialize Data Processing Service
+2023-09-29 01:06:14 [tubtraceability] info: Trying to connect Databus
+2023-09-29 01:06:14 [tubtraceability] info: Connected to MQTT broker at mqtt://172.26.192.1:1883
+2023-09-29 01:06:14 [tubtraceability] info: MQTT Client is connected to Databus
+2023-09-29 01:06:14 [tubtraceability] info: Subscribed to topic: ie/d/j/simatic/v1/s7c1/dp/r/plc/default
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM2
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM3
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM4
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM5
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM6
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM7
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM8
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM9
+2023-09-29 01:06:15 [tubtraceability] info: Data processing service is initialized for IMM10
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Printer configurations: 
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Latest uniqueid:
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2000
+2023-09-29 01:06:15 [tubtraceability] info: Connected to 172.26.192.1:2001
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:15 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:16 [tubtraceability] info: Received message: Inkjet OK!
+2023-09-29 01:06:16 [tubtraceability] info: Received message: Inkjet OK!

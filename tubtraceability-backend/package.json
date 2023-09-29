@@ -1,0 +1,26 @@
+{
+  "name": "tubtraceability_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "dev": "tsc && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "date-fns": "^2.30.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "mqtt": "^5.0.5",
+    "net": "^1.0.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.33.0",
+    "typescript": "^5.2.2",
+    "winston": "^3.10.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  }
+}

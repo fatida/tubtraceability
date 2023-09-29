@@ -1,0 +1,57 @@
+version: '2.4'
+services:
+  # tubtraceability-database:
+  #   image: tubtraceability-database
+  #   build: ./tubtraceability-database
+  #   container_name: tubtraceability-database
+  #   ports:
+  #     - 5432:5432
+  #   networks:
+  #     - "proxy-redirect"
+  #   mem_limit: 512mb
+  #   environment:
+  #     - TZ=Europe/Istanbul
+  #     - POSTGRES_USER=bsh
+  #     - POSTGRES_PASSWORD=Sunrise12345.
+  #     - POSTGRES_DB=tubtraceability
+  #   volumes:
+  #     - ./tubtraceability-database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  tubtraceability-backend:
+    image: tubtraceability-backend
+    build: ./tubtraceability-backend
+    container_name: tubtraceability-backend
+    environment:
+      - TZ=Europe/Istanbul
+    networks:
+      - "proxy-redirect"
+    mem_limit: 2048mb
+    volumes:
+      - './publish/:/publish/'
+      - './cfg-data/:/cfg-data/'
+  # tubtraceability_frontend:
+  #   image: tubtraceability_frontend
+  #   build: ./tubtraceability_frontend
+  #   container_name: tubtraceability_frontend
+  #   ports:
+  #     - 3001:3001
+  #   networks:
+  #     - "proxy-redirect"
+  #   mem_limit: 1024mb
+  #   depends_on:
+  #     - tubtraceability-database
+  #     - tubtraceability-backend
+  #   volumes:
+  #     - './publish/:/publish/'
+  #     - './cfg-data/:/cfg-data/'
+  #   healthcheck:
+  #     test: [ "CMD", "curl", "-f", "http://localhost:3001" ]
+  #     interval: 30s
+  #     timeout: 10s
+  #     retries: 10
+  #     start_period: 160s
+
+networks:
+  proxy-redirect:
+    external:
+      name: proxy-redirect
