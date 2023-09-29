@@ -11,6 +11,7 @@ const create_1 = require("../controller/db/create");
 const printcommand_1 = require("./printcommand");
 const imm7_1 = require("../dataset/imm7");
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
+const opcuaserver_1 = __importDefault(require("./opcuaserver"));
 let uniqueId;
 let inkjetPrinter;
 let labelPrinter;
@@ -83,6 +84,8 @@ const imm7DataProcessing = {
             }
             // Save Data on DB
             (0, create_1.crateProcessRecord)(imm7_1.imm7);
+            // Send Data to MES
+            opcuaserver_1.default.publishImm7(imm7_1.imm7);
             // Reset Barcode
             imm7_1.imm7.data.part.barcode = '';
             // Clear Inkjet Memory

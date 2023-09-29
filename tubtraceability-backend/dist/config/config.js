@@ -16,7 +16,7 @@ exports.config = {
         url: 'mqtt://172.26.192.1:1883',
         username: 'edge',
         password: 'edge',
-        subscribe: 'ie/d/j/simatic/v1/s7c1/dp/r/plc/default',
+        subscribe: 'ie/d/j/simatic/v1/opcua1/dp/r/OPCUA/default',
         publish: 'ie/d/j/simatic/v1/opcua1/dp/w',
         meta: 'ie/m/j/simatic/v1/opcua1/dp'
     },

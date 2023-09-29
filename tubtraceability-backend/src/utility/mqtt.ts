@@ -1,15 +1,16 @@
 import * as mqtt from 'mqtt';
 import logger from './logger'
+import { IMessage } from '../dataset/common'
 
-type Message = {
-  seq: number;
-  vals: {
-    id: number;
-    qc: number;
-    ts: Date;
-    val: number | string;
-  }[];
-};
+// type Message = {
+//   seq: number;
+//   vals: {
+//     id: number;
+//     qc: number;
+//     ts: Date;
+//     val: number | string;
+//   }[];
+// };
 
 class MQTTClient {
   public client: mqtt.MqttClient;
@@ -38,7 +39,7 @@ class MQTTClient {
     });
   }
 
-  public publish(topic: string, message: Message) {
+  public publish(topic: string, message: IMessage) {
     const data = JSON.stringify(message)
     this.client.publish(topic, data, (error) => {
       if (error) {

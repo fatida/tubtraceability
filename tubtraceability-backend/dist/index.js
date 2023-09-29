@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = require("./config/database");
 const logger_1 = __importDefault(require("./utility/logger"));
+const dataprocessing_1 = __importDefault(require("./service/dataprocessing"));
 const opcuaserver_1 = __importDefault(require("./service/opcuaserver"));
 // Connect and Sync to DB
 (() => __awaiter(void 0, void 0, void 0, function* () {
@@ -21,9 +22,9 @@ const opcuaserver_1 = __importDefault(require("./service/opcuaserver"));
         yield database_1.sequelize.sync();
         logger_1.default.info('Database synchronized');
         // Once database connections is established, start data processing services
-        // setTimeout(() => {
-        //   dataprocessing.initdataprocessing()
-        // }, 1000)
+        setTimeout(() => {
+            dataprocessing_1.default.initdataprocessing();
+        }, 1000);
         setTimeout(() => {
             opcuaserver_1.default.initopcuaserver();
         }, 1000);

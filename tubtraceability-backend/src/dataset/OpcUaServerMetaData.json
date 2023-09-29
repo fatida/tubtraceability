@@ -2,12 +2,12 @@
     "seq": 3,
     "connections": [
         {
-            "name": "OPCUA",
+            "name": "opcua",
             "type": "OPCUA",
             "dataPoints": [
                 {
                     "name": "default",
-                    "topic": "ie/d/j/simatic/v1/opcua1/dp/r/OPCUA/default",
+                    "topic": "ie/d/j/simatic/v1/opcua1/dp/r/opcua/default",
                     "pubTopic": "ie/d/j/simatic/v1/opcua1/dp/w",
                     "publishType": "bulk",
                     "dataPointDefinitions": [

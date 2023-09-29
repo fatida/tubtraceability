@@ -10,9 +10,9 @@ import opcuaserver from './service/opcuaserver'
     await sequelize.sync();
     logger.info('Database synchronized')    
     // Once database connections is established, start data processing services
-    // setTimeout(() => {
-    //   dataprocessing.initdataprocessing()
-    // }, 1000)
+    setTimeout(() => {
+      dataprocessing.initdataprocessing()
+    }, 1000)
 
     setTimeout(() => {
       opcuaserver.initopcuaserver()

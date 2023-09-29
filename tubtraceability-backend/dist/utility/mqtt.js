@@ -28,6 +28,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mqtt = __importStar(require("mqtt"));
 const logger_1 = __importDefault(require("./logger"));
+// type Message = {
+//   seq: number;
+//   vals: {
+//     id: number;
+//     qc: number;
+//     ts: Date;
+//     val: number | string;
+//   }[];
+// };
 class MQTTClient {
     constructor(brokerUrl, username, password) {
         this.client = mqtt.connect(brokerUrl, {

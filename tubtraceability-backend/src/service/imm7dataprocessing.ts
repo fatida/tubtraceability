@@ -6,7 +6,7 @@ import { crateProcessRecord } from '../controller/db/create'
 import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printcommand'
 import { imm7 } from '../dataset/imm7'
 import moment from 'moment-timezone';
-
+import opcuaserver from "./opcuaserver"
 let uniqueId: number
 let inkjetPrinter: TCPClient
 let labelPrinter: TCPClient
@@ -92,6 +92,9 @@ const imm7DataProcessing = {
             // Save Data on DB
             crateProcessRecord(imm7)
 
+            // Send Data to MES
+            opcuaserver.publishImm7(imm7)
+            
             // Reset Barcode
             imm7.data.part.barcode = ''
 
