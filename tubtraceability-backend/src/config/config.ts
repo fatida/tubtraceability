@@ -3,14 +3,14 @@
 //         port: 3000
 //     },
 //     databus: {
-//         url: 'mqtt://172.26.192.1:1883',
+//         url: 'mqtt://192.168.42.1:1883',
 //         username: 'edge',
 //         password: 'edge',
 //         subscribe: 'ie/d/j/simatic/v1/s7c1/dp/r/plc/default',
 //         publish: 'ie/d/j/simatic/v1/s7c1/dp/w/plc'
 //     },
 //     opcuaserver:{
-//         url: 'mqtt://172.26.192.1:1883',
+//         url: 'mqtt://192.168.42.1:1883',
 //         username: 'edge',
 //         password: 'edge',
 //         subscribe: 'ie/d/j/simatic/v1/opcua1/dp/r/opcua/default',
@@ -18,7 +18,7 @@
 //         meta: 'ie/m/j/simatic/v1/opcua1/dp'
 //     },
 //     database: {
-//         host: '172.26.192.1',
+//         host: '192.168.42.1',
 //         database: 'tubtraceability',
 //         user: 'bsh',
 //         password: 'Sunrise12345.'

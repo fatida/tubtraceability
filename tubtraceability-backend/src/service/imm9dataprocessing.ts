@@ -3,9 +3,10 @@ import logger from "../utility/logger"
 import { platform } from "../dataset/platform"
 import { getPrinterConfig, getLatestUniqueID } from '../controller/db/read'
 import { crateProcessRecord } from '../controller/db/create'
-import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printcommand'
+import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerservice'
 import { imm9 } from '../dataset/imm9'
 import moment from 'moment-timezone';
+import opcuaserver from "./opcuaserver"
 
 let uniqueId: number
 let inkjetPrinter: TCPClient
@@ -21,7 +22,7 @@ const imm9DataProcessing = {
     initDataProcessing() {
         logger.info('Data processing service is initialized for IMM9')
         getPrinterConfig('IMM9', 'inkjet').then(config => {
-            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0)
+            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'inkjet9')
             inkjetPrinter.connect()
             inkjetPrinter.client.on('connect', () => {
                 if (!initIsDone) {
@@ -32,7 +33,7 @@ const imm9DataProcessing = {
         })
 
         getPrinterConfig('IMM9', 'label').then(config => {
-            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0)
+            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'label9')
             labelPrinter.connect()
         })
     },
@@ -91,6 +92,9 @@ const imm9DataProcessing = {
 
             // Save Data on DB
             crateProcessRecord(imm9)
+
+            // Send Data to MES
+            opcuaserver.publishImm9(imm9)
 
             // Reset Barcode
             imm9.data.part.barcode = ''

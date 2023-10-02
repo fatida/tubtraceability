@@ -3,7 +3,7 @@ import logger from "../utility/logger"
 import { platform } from "../dataset/platform"
 import { getPrinterConfig, getLatestUniqueID } from '../controller/db/read'
 import { crateProcessRecord } from '../controller/db/create'
-import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printcommand'
+import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerservice'
 import { imm7 } from '../dataset/imm7'
 import moment from 'moment-timezone';
 import opcuaserver from "./opcuaserver"
@@ -21,7 +21,7 @@ const imm7DataProcessing = {
     initDataProcessing() {
         logger.info('Data processing service is initialized for IMM7')
         getPrinterConfig('IMM7', 'inkjet').then(config => {
-            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0)
+            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'inkjet7')
             inkjetPrinter.connect()
             inkjetPrinter.client.on('connect', () => {
                 if (!initIsDone) {
@@ -32,7 +32,7 @@ const imm7DataProcessing = {
         })
 
         getPrinterConfig('IMM7', 'label').then(config => {
-            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0)
+            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'label7')
             labelPrinter.connect()
         })
     },

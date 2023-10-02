@@ -23,7 +23,7 @@ export function crateProcessRecord(imm : IIMM){
 
     process.create(data)
     .then((result) => {
-      logger.info('Record saved:', result);
+      logger.info('Process Record saved on Process Table: ' +JSON.stringify(result));
     })
     .catch((error) => {
       logger.error('Error:', error);

@@ -21,6 +21,7 @@ import imm8DataProcessing from './imm8dataprocessing'
 import imm9DataProcessing from './imm9dataprocessing'
 import imm10DataProcessing from './imm10dataprocessing'
 import { updateScrapFields } from '../controller/db/update'
+import opcuaserver from "./opcuaserver"
 
 
 const dataprocessing = {
@@ -51,7 +52,7 @@ const dataprocessing = {
 
                 setTimeout(() => {
                     messageListener(mqttClient)
-                }, 5000 );
+                }, 5000);
 
             });
         } catch (error) {
@@ -142,6 +143,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm2.data.scrap.scrapBarcode, imm2.data.scrap.scrapBarcode, imm2.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm2Scrap(imm2)
+        }, 2000);
     }
 
     const imm3LastsCycleEndTime = message.vals.find(obj => obj.id === imm3.meta.part.lastCycleEndTime)
@@ -164,6 +169,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm3.data.scrap.scrapBarcode, imm3.data.scrap.scrapBarcode, imm3.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm3Scrap(imm3)
+        }, 2000);
     }
 
 
@@ -187,6 +196,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm4.data.scrap.scrapBarcode, imm4.data.scrap.scrapBarcode, imm4.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm4Scrap(imm4)
+        }, 2000);
     }
 
     const imm5LastsCycleEndTime = message.vals.find(obj => obj.id === imm5.meta.part.lastCycleEndTime)
@@ -209,6 +222,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm5.data.scrap.scrapBarcode, imm5.data.scrap.scrapBarcode, imm5.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm5Scrap(imm5)
+        }, 2000);
     }
 
 
@@ -232,6 +249,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm6.data.scrap.scrapBarcode, imm6.data.scrap.scrapBarcode, imm6.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm6Scrap(imm6)
+        }, 2000);
     }
 
     const imm7LastsCycleEndTime = message.vals.find(obj => obj.id === imm7.meta.part.lastCycleEndTime)
@@ -254,6 +275,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm7.data.scrap.scrapBarcode, imm7.data.scrap.scrapBarcode, imm7.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm7Scrap(imm7)
+        }, 2000);
     }
 
     const imm8LastsCycleEndTime = message.vals.find(obj => obj.id === imm8.meta.part.lastCycleEndTime)
@@ -276,6 +301,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm8.data.scrap.scrapBarcode, imm8.data.scrap.scrapBarcode, imm8.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm8Scrap(imm8)
+        }, 2000);
     }
 
     const imm9LastsCycleEndTime = message.vals.find(obj => obj.id === imm9.meta.part.lastCycleEndTime)
@@ -298,6 +327,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm9.data.scrap.scrapBarcode, imm9.data.scrap.scrapBarcode, imm9.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm9Scrap(imm9)
+        }, 2000);
     }
 
     const imm10LastsCycleEndTime = message.vals.find(obj => obj.id === imm10.meta.part.lastCycleEndTime)
@@ -320,9 +353,10 @@ function setImmData(message: IMessage) {
         setTimeout(() => {
             updateScrapFields(imm10.data.scrap.scrapBarcode, imm10.data.scrap.scrapBarcode, imm10.data.scrap.scrapReason)
         }, 1000);
+
+        setTimeout(() => {
+            opcuaserver.publishImm10Scrap(imm10)
+        }, 2000);
     }
-
-
-
 
 }
