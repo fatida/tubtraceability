@@ -4,7 +4,7 @@ import { platform } from "../dataset/platform"
 import { getPrinterConfig, getLatestUniqueID } from '../controller/db/read'
 import { crateProcessRecord } from '../controller/db/create'
 import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerservice'
-import { imm9 } from '../dataset/imm9'
+import { imm9, imm9Reset } from '../dataset/imm9'
 import moment from 'moment-timezone';
 import opcuaserver from "./opcuaserver"
 
@@ -22,7 +22,7 @@ const imm9DataProcessing = {
     initDataProcessing() {
         logger.info('Data processing service is initialized for IMM9')
         getPrinterConfig('IMM9', 'inkjet').then(config => {
-            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'inkjet9')
+            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'INKJET9')
             inkjetPrinter.connect()
             inkjetPrinter.client.on('connect', () => {
                 if (!initIsDone) {
@@ -33,7 +33,7 @@ const imm9DataProcessing = {
         })
 
         getPrinterConfig('IMM9', 'label').then(config => {
-            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'label9')
+            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'LABEL9')
             labelPrinter.connect()
         })
     },
@@ -41,7 +41,7 @@ const imm9DataProcessing = {
     setPrintData() {
         //Start Timer
         startTimer()
-        
+
         // Set Next Print Data   
         getLatestUniqueID('IMM9').then(lastUniqueId => {
             uniqueId = Number(lastUniqueId)
@@ -67,7 +67,7 @@ const imm9DataProcessing = {
                     inkjetPrinter.send(inkjetCommand)
                 })
                 .catch(error => {
-                    logger.error('Error:', error)
+                    logger.error('Failure on formatPrintCommand request :', error)
                 })
 
             // Set process flag
@@ -95,7 +95,10 @@ const imm9DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm9(imm9)
-
+            // Reset OPC UA Data
+            setTimeout(() => {
+                opcuaserver.publishImm9(imm9Reset)
+            }, 2000);
             // Reset Barcode
             imm9.data.part.barcode = ''
 

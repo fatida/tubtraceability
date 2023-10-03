@@ -4,7 +4,7 @@ import { platform } from "../dataset/platform"
 import { getPrinterConfig, getLatestUniqueID } from '../controller/db/read'
 import { crateProcessRecord } from '../controller/db/create'
 import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerservice'
-import { imm4 } from '../dataset/imm4'
+import { imm4, imm4Reset } from '../dataset/imm4'
 import moment from 'moment-timezone';
 import opcuaserver from "./opcuaserver"
 
@@ -27,7 +27,7 @@ const imm4DataProcessing = {
         logger.info('Data processing service is initialized for IMM4')
 
         getPrinterConfig('IMM4', 'inkjet').then(config => {
-            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'inkjet4')
+            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'INKJET4')
             inkjetPrinter.connect()
             inkjetPrinter.client.on('connect', () => {
                 if (!initIsDone) {
@@ -38,7 +38,7 @@ const imm4DataProcessing = {
         })
 
         getPrinterConfig('IMM4', 'label').then(config => {
-            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'label4')
+            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'LABEL4')
             labelPrinter.connect()
         })
 
@@ -89,7 +89,7 @@ const imm4DataProcessing = {
                     inkjetPrinter.send(inkjetCommand[0])
                 })
                 .catch(error => {
-                    logger.error('Error:', error)
+                    logger.error('Failure on formatPrintCommand request :', error)
                 })
 
             formatPrintCommand(printData1)
@@ -101,7 +101,7 @@ const imm4DataProcessing = {
                     inkjetPrinter.send(inkjetCommand[1])
                 })
                 .catch(error => {
-                    logger.error('Error:', error)
+                    logger.error('Failure on formatPrintCommand request :', error)
                 })
 
             // Set process flag
@@ -132,7 +132,10 @@ const imm4DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm4(imm4)
-
+            // Reset OPC UA Data
+            setTimeout(() => {
+                opcuaserver.publishImm4(imm4Reset)
+            }, 2000);
             // Reset Barcode
             imm4.data.part.barcode = ''
 

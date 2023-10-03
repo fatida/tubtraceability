@@ -1,4 +1,4 @@
-import Printer from '../../model/printer';
+import Printer from '../../model/printer'
 import Process from '../../model/process'
 import logger from "../../utility/logger"
 
@@ -10,16 +10,16 @@ export async function getPrinterConfig(imm: string, type: string) {
         imm: imm,
         type: type
       }
-    });
+    })
 
     if (printer) {
-      logger.info('Printer configurations: ', printer.toJSON());
+      logger.info('Printer configurations: ' + JSON.stringify(printer.toJSON()))
       return printer
     } else {
-      logger.warn('Printer configurations not found');
+      logger.warn('Printer configurations not found')
     }
   } catch (error) {
-    logger.error('Error:', error);
+    logger.error('Failure on getPrinterConfig request:', error)
   }
 }
 
@@ -29,16 +29,16 @@ export async function getLatestUniqueID(imm: string) {
       where: {
         imm: imm
       }
-    });
+    })
 
     if (latestUniqueID !== null) {
-      logger.info('Latest uniqueid:', latestUniqueID);
+      logger.info('Latest uniqueid: ' + latestUniqueID)
       return latestUniqueID
     } else {
-      logger.warn('No record found with imm = "imm10"');
+      logger.warn('No record found with imm = "imm10"')
     }
   } catch (error) {
-    logger.error('Error:', error);
+    logger.error('Failure on getLatestUniqueID request:', error)
   }
 }
 
@@ -48,15 +48,16 @@ export async function getProcessRecord(uniqueid: number) {
       where: {
         uniqueid: uniqueid,
       }
-    });
+    })
 
     if (process) {
-      logger.info('Found process record:', process.toJSON());
+      logger.info('Found process record:', process.toJSON())
       return process
     } else {
-      logger.warn('Process record not found');
+      logger.warn('Process record not found')
     }
   } catch (error) {
-    logger.error('Error:', error);
+    logger.error('Failure on getProcessRecord request:', error)
   }
 }
+

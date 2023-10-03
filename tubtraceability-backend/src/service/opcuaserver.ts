@@ -5,6 +5,7 @@ import { opcuaservermetadata } from '../dataset/opcuaservermeta'
 import { IIMM, IMessage } from '../dataset/common'
 
 let mqttClient: MQTTClient
+
 const opcuaserver = {
     initopcuaserver() {
         logger.info("OPC UA Server is initialized.")
@@ -12,7 +13,8 @@ const opcuaserver = {
             mqttClient = new MQTTClient(
                 config.opcuaserver.url,
                 config.opcuaserver.username,
-                config.opcuaserver.password
+                config.opcuaserver.password,
+                config.opcuaserver.client
             )
             logger.info("Trying to connect databus")
             mqttClient.client.on('connect', () => {
@@ -44,13 +46,13 @@ const opcuaserver = {
             { id: "205", qc: 3, ts: timestamp, val: imm2?.data?.part?.mouldDescription },
             { id: "206", qc: 3, ts: timestamp, val: imm2?.data?.part?.materialNumber },
             { id: "207", qc: 3, ts: timestamp, val: imm2?.data?.part?.materialDescription },
-            { id: "208", qc: 3, ts: timestamp, val: imm2?.data?.scrap?.scrapReason },
             { id: "209", qc: 3, ts: timestamp, val: imm2?.data?.energy?.shiftkWh },
             { id: "210", qc: 3, ts: timestamp, val: imm2?.data?.energy?.shiftkWh_pcs },
             { id: "211", qc: 3, ts: timestamp, val: imm2?.data?.energy?.shiftkWh_kg },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm2Scrap(imm2: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -61,6 +63,20 @@ const opcuaserver = {
 
             { id: "212", qc: 3, ts: timestamp, val: imm2?.data?.scrap?.scrapBarcode },
             { id: "202", qc: 3, ts: timestamp, val: imm2?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm2ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "212", qc: 3, ts: timestamp, val: '' },
+            { id: "202", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -79,7 +95,6 @@ const opcuaserver = {
             { id: "305", qc: 3, ts: timestamp, val: imm3?.data?.part?.mouldDescription },
             { id: "306", qc: 3, ts: timestamp, val: imm3?.data?.part?.materialNumber },
             { id: "307", qc: 3, ts: timestamp, val: imm3?.data?.part?.materialDescription },
-            { id: "308", qc: 3, ts: timestamp, val: imm3?.data?.scrap?.scrapReason },
             { id: "309", qc: 3, ts: timestamp, val: imm3?.data?.energy?.shiftkWh },
             { id: "310", qc: 3, ts: timestamp, val: imm3?.data?.energy?.shiftkWh_pcs },
             { id: "311", qc: 3, ts: timestamp, val: imm3?.data?.energy?.shiftkWh_kg },
@@ -159,6 +174,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm3Scrap(imm3: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -169,6 +185,20 @@ const opcuaserver = {
 
             { id: "385", qc: 3, ts: timestamp, val: imm3?.data?.scrap?.scrapBarcode },
             { id: "308", qc: 3, ts: timestamp, val: imm3?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm3ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "385", qc: 3, ts: timestamp, val: '' },
+            { id: "308", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -187,7 +217,6 @@ const opcuaserver = {
             { id: "405", qc: 3, ts: timestamp, val: imm4?.data?.part?.mouldDescription },
             { id: "406", qc: 3, ts: timestamp, val: imm4?.data?.part?.materialNumber },
             { id: "407", qc: 3, ts: timestamp, val: imm4?.data?.part?.materialDescription },
-            { id: "408", qc: 3, ts: timestamp, val: imm4?.data?.scrap?.scrapReason },
             { id: "409", qc: 3, ts: timestamp, val: imm4?.data?.energy?.shiftkWh },
             { id: "410", qc: 3, ts: timestamp, val: imm4?.data?.energy?.shiftkWh_pcs },
             { id: "411", qc: 3, ts: timestamp, val: imm4?.data?.energy?.shiftkWh_kg },
@@ -267,6 +296,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm4Scrap(imm4: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -281,6 +311,19 @@ const opcuaserver = {
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
 
+    publishImm4ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "485", qc: 3, ts: timestamp, val: '' },
+            { id: "408", qc: 3, ts: timestamp, val: 0 },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
     publishImm5(imm5: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -295,7 +338,6 @@ const opcuaserver = {
             { id: "505", qc: 3, ts: timestamp, val: imm5?.data?.part?.mouldDescription },
             { id: "506", qc: 3, ts: timestamp, val: imm5?.data?.part?.materialNumber },
             { id: "507", qc: 3, ts: timestamp, val: imm5?.data?.part?.materialDescription },
-            { id: "508", qc: 3, ts: timestamp, val: imm5?.data?.scrap?.scrapReason },
             { id: "509", qc: 3, ts: timestamp, val: imm5?.data?.energy?.shiftkWh },
             { id: "510", qc: 3, ts: timestamp, val: imm5?.data?.energy?.shiftkWh_pcs },
             { id: "511", qc: 3, ts: timestamp, val: imm5?.data?.energy?.shiftkWh_kg },
@@ -372,6 +414,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm5Scrap(imm5: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -382,6 +425,20 @@ const opcuaserver = {
 
             { id: "582", qc: 3, ts: timestamp, val: imm5?.data?.scrap?.scrapBarcode },
             { id: "508", qc: 3, ts: timestamp, val: imm5?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm5ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "582", qc: 3, ts: timestamp, val: '' },
+            { id: "508", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -400,7 +457,6 @@ const opcuaserver = {
             { id: "605", qc: 3, ts: timestamp, val: imm6?.data?.part?.mouldDescription },
             { id: "606", qc: 3, ts: timestamp, val: imm6?.data?.part?.materialNumber },
             { id: "607", qc: 3, ts: timestamp, val: imm6?.data?.part?.materialDescription },
-            { id: "608", qc: 3, ts: timestamp, val: imm6?.data?.scrap?.scrapReason },
             { id: "609", qc: 3, ts: timestamp, val: imm6?.data?.energy?.shiftkWh },
             { id: "610", qc: 3, ts: timestamp, val: imm6?.data?.energy?.shiftkWh_pcs },
             { id: "611", qc: 3, ts: timestamp, val: imm6?.data?.energy?.shiftkWh_kg },
@@ -457,6 +513,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm6Scrap(imm6: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -467,6 +524,20 @@ const opcuaserver = {
 
             { id: "662", qc: 3, ts: timestamp, val: imm6?.data?.scrap?.scrapBarcode },
             { id: "608", qc: 3, ts: timestamp, val: imm6?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm6ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "662", qc: 3, ts: timestamp, val: '' },
+            { id: "608", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -485,7 +556,6 @@ const opcuaserver = {
             { id: "705", qc: 3, ts: timestamp, val: imm7?.data?.part?.mouldDescription },
             { id: "706", qc: 3, ts: timestamp, val: imm7?.data?.part?.materialNumber },
             { id: "707", qc: 3, ts: timestamp, val: imm7?.data?.part?.materialDescription },
-            { id: "708", qc: 3, ts: timestamp, val: imm7?.data?.scrap?.scrapReason },
             { id: "709", qc: 3, ts: timestamp, val: imm7?.data?.energy?.shiftkWh },
             { id: "710", qc: 3, ts: timestamp, val: imm7?.data?.energy?.shiftkWh_pcs },
             { id: "711", qc: 3, ts: timestamp, val: imm7?.data?.energy?.shiftkWh_kg },
@@ -542,6 +612,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm7Scrap(imm7: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -552,6 +623,20 @@ const opcuaserver = {
 
             { id: "762", qc: 3, ts: timestamp, val: imm7?.data?.scrap?.scrapBarcode },
             { id: "708", qc: 3, ts: timestamp, val: imm7?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm7ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "762", qc: 3, ts: timestamp, val: '' },
+            { id: "708", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -570,7 +655,6 @@ const opcuaserver = {
             { id: "805", qc: 3, ts: timestamp, val: imm8?.data?.part?.mouldDescription },
             { id: "806", qc: 3, ts: timestamp, val: imm8?.data?.part?.materialNumber },
             { id: "807", qc: 3, ts: timestamp, val: imm8?.data?.part?.materialDescription },
-            { id: "808", qc: 3, ts: timestamp, val: imm8?.data?.scrap?.scrapReason },
             { id: "809", qc: 3, ts: timestamp, val: imm8?.data?.energy?.shiftkWh },
             { id: "810", qc: 3, ts: timestamp, val: imm8?.data?.energy?.shiftkWh_pcs },
             { id: "811", qc: 3, ts: timestamp, val: imm8?.data?.energy?.shiftkWh_kg },
@@ -639,6 +723,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm8Scrap(imm8: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -649,6 +734,20 @@ const opcuaserver = {
 
             { id: "874", qc: 3, ts: timestamp, val: imm8?.data?.scrap?.scrapBarcode },
             { id: "808", qc: 3, ts: timestamp, val: imm8?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm8ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "874", qc: 3, ts: timestamp, val: '' },
+            { id: "808", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -668,7 +767,6 @@ const opcuaserver = {
             { id: "906", qc: 3, ts: timestamp, val: imm9?.data?.part?.materialNumber },
             { id: "907", qc: 3, ts: timestamp, val: imm9?.data?.part?.materialDescription },
             { id: "908", qc: 3, ts: timestamp, val: imm9?.data?.part?.weight },
-            { id: "909", qc: 3, ts: timestamp, val: imm9?.data?.scrap?.scrapReason },
             { id: "910", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWh },
             { id: "911", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWhPcs },
             { id: "912", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWhKg },
@@ -739,6 +837,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm9Scrap(imm9: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -749,6 +848,48 @@ const opcuaserver = {
 
             { id: "977", qc: 3, ts: timestamp, val: imm9?.data?.scrap?.scrapBarcode },
             { id: "909", qc: 3, ts: timestamp, val: imm9?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm9Secondary(imm9: IIMM) {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "975", qc: 3, ts: timestamp, val: imm9?.data?.secondary?.qualityCheckBarcode },
+            { id: "976", qc: 3, ts: timestamp, val: imm9?.data?.secondary?.qualityCheckReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm9ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "977", qc: 3, ts: timestamp, val: '' },
+            { id: "909", qc: 3, ts: timestamp, val: 0 },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm9SecondaryReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "975", qc: 3, ts: timestamp, val: ''},
+            { id: "976", qc: 3, ts: timestamp, val: '' },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -768,7 +909,6 @@ const opcuaserver = {
             { id: "1006", qc: 3, ts: timestamp, val: imm10?.data?.part?.materialNumber },
             { id: "1007", qc: 3, ts: timestamp, val: imm10?.data?.part?.materialDescription },
             { id: "1008", qc: 3, ts: timestamp, val: imm10?.data?.part?.weight },
-            { id: "1009", qc: 3, ts: timestamp, val: imm10?.data?.scrap?.scrapReason },
             { id: "1010", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWh },
             { id: "1011", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWhPcs },
             { id: "1012", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWhKg },
@@ -839,6 +979,7 @@ const opcuaserver = {
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm10Scrap(imm10: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -849,6 +990,48 @@ const opcuaserver = {
 
             { id: "1077", qc: 3, ts: timestamp, val: imm10?.data?.scrap?.scrapBarcode },
             { id: "1009", qc: 3, ts: timestamp, val: imm10?.data?.scrap?.scrapReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm10ScrapReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "1077", qc: 3, ts: timestamp, val: '' },
+            { id: "1009", qc: 3, ts: timestamp, val: 0 },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm10Secondary(imm10: IIMM) {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "1075", qc: 3, ts: timestamp, val: imm10?.data?.secondary?.qualityCheckBarcode },
+            { id: "1076", qc: 3, ts: timestamp, val: imm10?.data?.secondary?.qualityCheckReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm10SecondaryReset() {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+
+            { id: "1075", qc: 3, ts: timestamp, val: ''},
+            { id: "1076", qc: 3, ts: timestamp, val: ''},
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },

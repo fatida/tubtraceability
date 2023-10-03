@@ -4,7 +4,7 @@ import { platform } from "../dataset/platform"
 import { getPrinterConfig, getLatestUniqueID } from '../controller/db/read'
 import { crateProcessRecord } from '../controller/db/create'
 import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerservice'
-import { imm10 } from '../dataset/imm10'
+import { imm10, imm10Reset } from '../dataset/imm10'
 import moment from 'moment-timezone';
 import opcuaserver from "./opcuaserver"
 
@@ -22,7 +22,7 @@ const imm10DataProcessing = {
     initDataProcessing() {
         logger.info('Data processing service is initialized for IMM10')
         getPrinterConfig('IMM10', 'inkjet').then(config => {
-            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'inkjet10')
+            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'INKJET10')
             inkjetPrinter.connect()
             inkjetPrinter.client.on('connect', () => {
                 if (!initIsDone) {
@@ -33,7 +33,7 @@ const imm10DataProcessing = {
         })
 
         getPrinterConfig('IMM10', 'label').then(config => {
-            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'label10')
+            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'LABEL10')
             labelPrinter.connect()
         })
     },
@@ -67,7 +67,7 @@ const imm10DataProcessing = {
                     inkjetPrinter.send(inkjetCommand)
                 })
                 .catch(error => {
-                    logger.error('Error:', error)
+                    logger.error('Failure on formatPrintCommand request :', error)
                 })
 
             // Set process flag
@@ -95,7 +95,10 @@ const imm10DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm10(imm10)
-
+            // Reset OPC UA Data
+            setTimeout(() => {
+                opcuaserver.publishImm10(imm10Reset)
+            }, 2000);
             // Reset Barcode
             imm10.data.part.barcode = ''
 

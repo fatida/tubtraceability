@@ -4,7 +4,7 @@ import { platform } from "../dataset/platform"
 import { getPrinterConfig, getLatestUniqueID } from '../controller/db/read'
 import { crateProcessRecord } from '../controller/db/create'
 import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerservice'
-import { imm8 } from '../dataset/imm8'
+import { imm8, imm8Reset } from '../dataset/imm8'
 import moment from 'moment-timezone';
 import opcuaserver from "./opcuaserver"
 
@@ -22,7 +22,7 @@ const imm8DataProcessing = {
     initDataProcessing() {
         logger.info('Data processing service is initialized for IMM8')
         getPrinterConfig('IMM8', 'inkjet').then(config => {
-            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'inkjet8')
+            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'INKJET8')
             inkjetPrinter.connect()
             inkjetPrinter.client.on('connect', () => {
                 if (!initIsDone) {
@@ -33,7 +33,7 @@ const imm8DataProcessing = {
         })
 
         getPrinterConfig('IMM8', 'label').then(config => {
-            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'label8')
+            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'LABEL8')
             labelPrinter.connect()
         })
     },
@@ -41,7 +41,7 @@ const imm8DataProcessing = {
     setPrintData() {
         //Start Timer
         startTimer()
-        
+
         // Set Next Print Data   
         getLatestUniqueID('IMM8').then(lastUniqueId => {
             uniqueId = Number(lastUniqueId)
@@ -67,7 +67,7 @@ const imm8DataProcessing = {
                     inkjetPrinter.send(inkjetCommand)
                 })
                 .catch(error => {
-                    logger.error('Error:', error)
+                    logger.error('Failure on formatPrintCommand request :', error)
                 })
 
             // Set process flag
@@ -95,7 +95,10 @@ const imm8DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm8(imm8)
-            
+            // Reset OPC UA Data
+            setTimeout(() => {
+                opcuaserver.publishImm8(imm8Reset)
+            }, 2000);
             // Reset Barcode
             imm8.data.part.barcode = ''
 

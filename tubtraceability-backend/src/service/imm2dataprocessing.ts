@@ -1,10 +1,11 @@
 import TCPClient from "../utility/tcp"
 import logger from "../utility/logger"
 import { platform } from "../dataset/platform"
-import { getPrinterConfig, getLatestUniqueID, getProcessRecord } from '../controller/db/read'
+import { getPrinterConfig, getLatestUniqueID } from '../controller/db/read'
+import { updateMachineStatus } from '../controller/db/update'
 import { crateProcessRecord } from '../controller/db/create'
 import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerservice'
-import { imm2 } from '../dataset/imm2'
+import { imm2, imm2Reset } from '../dataset/imm2'
 import opcuaserver from "./opcuaserver"
 
 let uniqueId: number
@@ -27,8 +28,10 @@ const imm2DataProcessing = {
 
     initDataProcessing() {
         logger.info('Data processing service is initialized for IMM2')
+        // Update Machine Status
+        updateMachineStatus(imm2.imm, 1)
         getPrinterConfig('IMM2', 'inkjet').then(config => {
-            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'inkjet2')
+            inkjetPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'INKJET2')
             inkjetPrinter.connect()
             inkjetPrinter.client.on('connect', () => {
                 if (!initIsDone) {
@@ -45,7 +48,7 @@ const imm2DataProcessing = {
         })
 
         getPrinterConfig('IMM2', 'label').then(config => {
-            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'label2')
+            labelPrinter = new TCPClient(config?.ip || '', config?.port || 0, 'LABEL2')
             labelPrinter.connect()
         })
 
@@ -100,7 +103,7 @@ const imm2DataProcessing = {
                 inkjetPrinter.send(inkjetCommand[0])
             })
             .catch(error => {
-                logger.error('Error:', error)
+                logger.error('Failure on formatPrintCommand request :', error)
             })
 
         formatPrintCommand(printData1)
@@ -112,7 +115,7 @@ const imm2DataProcessing = {
                 inkjetPrinter.send(inkjetCommand[1])
             })
             .catch(error => {
-                logger.error('Error:', error)
+                logger.error('Failure on formatPrintCommand request :', error)
             })
 
         // Set process flag
@@ -122,6 +125,7 @@ const imm2DataProcessing = {
     startDataProcessing() {
         if (process) {
             logger.info('Data processing service is started for IMM2')
+            updateMachineStatus(imm2.imm, 1)
             // Stop Timer
             resetTimer()
             // Check barcode
@@ -140,7 +144,12 @@ const imm2DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm2(imm2)
-            
+
+            // Reset OPC UA Data
+            setTimeout(() => {
+                opcuaserver.publishImm2(imm2Reset)
+            }, 2000);
+
             // Reset Barcode
             imm2.data.part.barcode = ''
 
@@ -179,6 +188,8 @@ function startTimer() {
             timeoutCounter = timeoutCounter + 1
         }
         else {
+            // Update Machine Status
+            updateMachineStatus(imm2.imm, 0)
             logger.info('Machine is not running')
             timeoutCounter = 0
             resetTimer()

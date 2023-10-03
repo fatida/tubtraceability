@@ -1,5 +1,6 @@
 import * as net from 'net'
 import logger from './logger'
+import {updateMachineStatus} from '../controller/db/update'
 
 class TCPClient {
   public client: net.Socket
@@ -22,6 +23,9 @@ class TCPClient {
   public onConnect() {
     this.isConnected = true
     logger.info(`Client is connected to printer ${this.clientId} at ${this.host}:${this.port}`)
+
+    //Update Status as offline    
+    updateMachineStatus(this.clientId, 1)
   }
 
   public onData(data: Buffer) {
@@ -35,11 +39,14 @@ class TCPClient {
     this.client.destroy()
     this.isConnected = false
     logger.info(`Client disconnected from ${this.clientId} printer at ${this.host}:${this.port}`)
+
+    //Update Status as offline
+    updateMachineStatus(this.clientId, 0)
     this.reconnect()
   }
 
   public onError(error: Error) {
-    logger.error(`Error: ${error.message}`)
+    logger.error(`${this.clientId} Error: ${error.message}`)
     this.client.destroy()
   }
 
@@ -59,7 +66,7 @@ class TCPClient {
   public send(message: string) {
     if (this.isConnected) {
       
-      if (this.clientId.includes('inkjet')) {
+      if (this.clientId.includes('INKJET')) {
         logger.info(`Print Message to sent printer ${this.clientId}. Message: ${message}`)
         this.client.write(Buffer.from(message, 'hex'))
       }
