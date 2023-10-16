@@ -85,8 +85,7 @@ const imm6DataProcessing = {
 
             // Check barcode
             if (imm6.data.part.barcode !== imm6.datamatrix) {
-                logger.info('Barcode read is failed. Print request is sent to label printer')
-                imm6.data.part.barcode = 'ReadError'
+                logger.info(`IMM6 Barcode read is failed. Datamatrix: ${imm6.datamatrix} Barcode: ${imm6.data.part.barcode} Print request is sent to LABEL6 printer`)                
                 labelPrinter.send(labelCommand)
             }
 
@@ -96,9 +95,10 @@ const imm6DataProcessing = {
             opcuaserver.publishImm6(imm6)
 
             // Reset OPC UA Data
-            setTimeout(() => {
-                opcuaserver.publishImm6(imm6Reset)
-            }, 2000);
+            // setTimeout(() => {
+            //     opcuaserver.publishImm6(imm6Reset)
+            // }, 2000);
+
             // Reset Barcode
             imm6.data.part.barcode = ''
 
@@ -115,16 +115,16 @@ export default imm6DataProcessing
 
 function startTimer() {
     timer = setTimeout(() => {
-        logger.info('Barcode reading timeout')
+        logger.info('IMM6 Barcode reading timeout')
         const inactiveTime = getTimeDifferenceInSeconds(imm6?.data?.part?.lastCycleEndTime)
         const isMachineActive = (inactiveTime < 300 ? true : false) || false
 
         if (isMachineActive) {
-            logger.info('Machine is running')
+            logger.info('IMM6 is running')
             imm6DataProcessing.startDataProcessing()
         }
         else {
-            logger.info('Machine is not running')
+            logger.info('IMM6 is not running')
             inkjetPrinter.send(inkjetResetCommand)
             process = false
             resetTimer()

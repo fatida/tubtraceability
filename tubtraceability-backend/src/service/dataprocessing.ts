@@ -20,7 +20,7 @@ import imm7DataProcessing from './imm7dataprocessing'
 import imm8DataProcessing from './imm8dataprocessing'
 import imm9DataProcessing from './imm9dataprocessing'
 import imm10DataProcessing from './imm10dataprocessing'
-import { updateScrapFields, updateSecondaryFields, updateMachineStatus } from '../controller/db/update'
+import { updateScrapFields, updateQualityCheckFields, updateMachineStatus } from '../controller/db/update'
 import opcuaserver from "./opcuaserver"
 
 
@@ -129,6 +129,26 @@ function setImmData(message: IMessage) {
                 }
             }
         }
+
+        for (const key in imm.meta.qualitycheckdata) {
+            if (imm.meta.qualitycheckdata.hasOwnProperty(key)) {
+                const id = imm.meta.qualitycheckdata[key]
+                const matchingVal = message.vals.find(val => val.id === id)
+                if (matchingVal) {
+                    imm.data.qualitycheckdata[key] = matchingVal.val
+                }
+            }
+        }
+
+        for (const key in imm.meta.production) {
+            if (imm.meta.production.hasOwnProperty(key)) {
+                const id = imm.meta.production[key]
+                const matchingVal = message.vals.find(val => val.id === id)
+                if (matchingVal) {
+                    imm.data.production[key] = matchingVal.val
+                }
+            }
+        }
     })
 
     const imm2BarcodeReadTime = message.vals.find(obj => obj.id === imm2.meta.part.barcodeReadTime)
@@ -142,16 +162,24 @@ function setImmData(message: IMessage) {
 
     if (imm2ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm2.data.scrap.scrapBarcode, imm2.data.scrap.scrapBarcode, imm2.data.scrap.scrapReason)
+            updateScrapFields(imm2.data.scrap.scrapBarcode, imm2.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm2Scrap(imm2)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm2Scrap(imm2)
-        }, 2000)
+            imm2.data.scrap.scrapBarcode = ''
+            imm2.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm2ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm2ScrapReset()
+        // }, 3000)
     }
 
     const imm3LastsCycleEndTime = message.vals.find(obj => obj.id === imm3.meta.part.lastCycleEndTime)
@@ -173,22 +201,31 @@ function setImmData(message: IMessage) {
 
     if (imm3ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm3.data.scrap.scrapBarcode, imm3.data.scrap.scrapBarcode, imm3.data.scrap.scrapReason)
+            updateScrapFields(imm3.data.scrap.scrapBarcode, imm3.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm3Scrap(imm3)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm3Scrap(imm3)
-        }, 2000)
+            imm3.data.scrap.scrapBarcode = ''
+            imm3.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm3ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm3ScrapReset()
+        // }, 3000)
     }
+
 
     if (imm3MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm3.imm, imm3.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
     }
 
 
@@ -212,22 +249,30 @@ function setImmData(message: IMessage) {
 
     if (imm4ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm4.data.scrap.scrapBarcode, imm4.data.scrap.scrapBarcode, imm4.data.scrap.scrapReason)
+            updateScrapFields(imm4.data.scrap.scrapBarcode, imm4.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm4Scrap(imm4)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm4Scrap(imm4)
-        }, 2000)
+            imm4.data.scrap.scrapBarcode = ''
+            imm4.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm4ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm4ScrapReset()
+        // }, 3000)
     }
 
     if (imm4MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm4.imm, imm4.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
     }
 
     const imm5LastsCycleEndTime = message.vals.find(obj => obj.id === imm5.meta.part.lastCycleEndTime)
@@ -250,22 +295,29 @@ function setImmData(message: IMessage) {
 
     if (imm5ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm5.data.scrap.scrapBarcode, imm5.data.scrap.scrapBarcode, imm5.data.scrap.scrapReason)
+            updateScrapFields(imm5.data.scrap.scrapBarcode, imm5.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm5Scrap(imm5)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm5Scrap(imm5)
-        }, 2000)
+            imm5.data.scrap.scrapBarcode = ''
+            imm5.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm5ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm5ScrapReset()
+        // }, 3000)
     }
-
     if (imm5MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm5.imm, imm5.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
     }
 
     const imm6LastsCycleEndTime = message.vals.find(obj => obj.id === imm6.meta.part.lastCycleEndTime)
@@ -287,22 +339,32 @@ function setImmData(message: IMessage) {
 
     if (imm6ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm6.data.scrap.scrapBarcode, imm6.data.scrap.scrapBarcode, imm6.data.scrap.scrapReason)
+
+            updateScrapFields(imm6.data.scrap.scrapBarcode, imm6.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm6Scrap(imm6)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm6Scrap(imm6)
-        }, 2000)
+            imm6.data.scrap.scrapBarcode = ''
+            imm6.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm6ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm6ScrapReset()
+        // }, 3000)
     }
+
 
     if (imm6MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm6.imm, imm6.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
     }
 
     const imm7LastsCycleEndTime = message.vals.find(obj => obj.id === imm7.meta.part.lastCycleEndTime)
@@ -324,22 +386,32 @@ function setImmData(message: IMessage) {
 
     if (imm7ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm7.data.scrap.scrapBarcode, imm7.data.scrap.scrapBarcode, imm7.data.scrap.scrapReason)
+
+            updateScrapFields(imm7.data.scrap.scrapBarcode, imm7.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm7Scrap(imm7)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm7Scrap(imm7)
-        }, 2000)
+            imm7.data.scrap.scrapBarcode = ''
+            imm7.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm7ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm7ScrapReset()
+        // }, 3000)
     }
+
 
     if (imm7MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm7.imm, imm7.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
     }
 
     const imm8LastsCycleEndTime = message.vals.find(obj => obj.id === imm8.meta.part.lastCycleEndTime)
@@ -362,29 +434,38 @@ function setImmData(message: IMessage) {
 
     if (imm8ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm8.data.scrap.scrapBarcode, imm8.data.scrap.scrapBarcode, imm8.data.scrap.scrapReason)
+
+            updateScrapFields(imm8.data.scrap.scrapBarcode, imm8.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm8Scrap(imm8)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm8Scrap(imm8)
-        }, 2000)
+            imm8.data.scrap.scrapBarcode = ''
+            imm8.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm8ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm8ScrapReset()
+        // }, 3000)
     }
 
     if (imm8MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm8.imm, imm8.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
     }
 
     const imm9LastsCycleEndTime = message.vals.find(obj => obj.id === imm9.meta.part.lastCycleEndTime)
     const imm9BarcodeReadTime = message.vals.find(obj => obj.id === imm9.meta.part.barcodeReadTime)
     const imm9ScrapBarcode = message.vals.find(obj => obj.id === imm9.meta.scrap.scrapBarcode)
-    const imm9SecondaryBarcode = message.vals.find(obj => obj.id === imm10.meta.secondary.QualityCheckBarcode)
     const imm9MachineStatus = message.vals.find(obj => obj.id === imm9.meta.part.machineStatus)
+    const imm9QcReadTime = message.vals.find(obj => obj.id === imm9.meta.qualitycheckdata.qcReadTime)
 
 
     if (imm9LastsCycleEndTime) {
@@ -401,43 +482,58 @@ function setImmData(message: IMessage) {
 
     if (imm9ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm9.data.scrap.scrapBarcode, imm9.data.scrap.scrapBarcode, imm9.data.scrap.scrapReason)
+
+            updateScrapFields(imm9.data.scrap.scrapBarcode, imm9.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm9Scrap(imm9)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
+
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm9Scrap(imm9)
-        }, 2000)
+            imm9.data.scrap.scrapBarcode = ''
+            imm9.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm9ScrapReset()
-        }, 4000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm9ScrapReset()
+        // }, 3000)
     }
 
-    if (imm9SecondaryBarcode) {
-        setTimeout(() => {
-            updateSecondaryFields(imm9.data.scrap.scrapBarcode, imm9.data.secondary.qualityCheckBarcode, imm9.data.secondary.qualityCheckReason)
-        }, 1000)
-
-        setTimeout(() => {
-            opcuaserver.publishImm9Secondary(imm9)
-        }, 2000)
-
-        setTimeout(() => {
-            opcuaserver.publishImm9SecondaryReset()
-        }, 4000)
-    }
 
     if (imm9MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm9.imm, imm9.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
+    }
+
+    if (imm9QcReadTime) {
+        setTimeout(() => {
+            updateQualityCheckFields(imm9.data.qualitycheckdata.qcReadTime, imm9.data.qualitycheckdata.qcBarcode, imm9.data.qualitycheckdata.qcResult, imm9.data.qualitycheckdata.qcReason)
+                .then(() => {
+                    opcuaserver.publishImm9QualityCheckData(imm9)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update quality check fields: ' + error)
+                })
+
+        }, 2000)
+        setTimeout(() => {
+            imm9.data.qualitycheckdata.qcReadTime = ''
+            imm9.data.qualitycheckdata.qcBarcode = ''
+            imm9.data.qualitycheckdata.qcResult = ''
+            imm9.data.qualitycheckdata.qcReason = ''
+        }, 4000)
     }
 
     const imm10LastsCycleEndTime = message.vals.find(obj => obj.id === imm10.meta.part.lastCycleEndTime)
     const imm10BarcodeReadTime = message.vals.find(obj => obj.id === imm10.meta.part.barcodeReadTime)
     const imm10ScrapBarcode = message.vals.find(obj => obj.id === imm10.meta.scrap.scrapBarcode)
-    const imm10SecondaryBarcode = message.vals.find(obj => obj.id === imm10.meta.secondary.QualityCheckBarcode)
     const imm10MachineStatus = message.vals.find(obj => obj.id === imm10.meta.part.machineStatus)
+    const imm10QcReadTime = message.vals.find(obj => obj.id === imm10.meta.qualitycheckdata.qcReadTime)
 
 
     if (imm10LastsCycleEndTime) {
@@ -454,36 +550,50 @@ function setImmData(message: IMessage) {
 
     if (imm10ScrapBarcode) {
         setTimeout(() => {
-            updateScrapFields(imm10.data.scrap.scrapBarcode, imm10.data.scrap.scrapBarcode, imm10.data.scrap.scrapReason)
+
+            updateScrapFields(imm10.data.scrap.scrapBarcode, imm10.data.scrap.scrapReason)
+                .then(() => {
+                    opcuaserver.publishImm10Scrap(imm10)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update scrap fields: ' + error)
+                })
         }, 1000)
 
         setTimeout(() => {
-            opcuaserver.publishImm10Scrap(imm10)
-        }, 2000)
+            imm10.data.scrap.scrapBarcode = ''
+            imm10.data.scrap.scrapReason = 0
+        }, 1500)
 
-        setTimeout(() => {
-            opcuaserver.publishImm10ScrapReset()
-        }, 2000)
+        // setTimeout(() => {
+        //     opcuaserver.publishImm10ScrapReset()
+        // }, 3000)
     }
 
-    if (imm10SecondaryBarcode) {
-        setTimeout(() => {
-            updateSecondaryFields(imm10.data.scrap.scrapBarcode, imm10.data.secondary.qualityCheckBarcode, imm10.data.secondary.qualityCheckReason)
-        }, 1000)
-
-        setTimeout(() => {
-            opcuaserver.publishImm10Secondary(imm10)
-        }, 2000)
-
-        setTimeout(() => {
-            opcuaserver.publishImm10SecondaryReset()
-        }, 4000)
-    }
 
     if (imm10MachineStatus) {
         setTimeout(() => {
             updateMachineStatus(imm10.imm, imm10.data.part.machineStatus)
-        }, 1000);
+        }, 1000)
     }
 
+    if (imm10QcReadTime) {
+        setTimeout(() => {
+            updateQualityCheckFields(imm10.data.qualitycheckdata.qcReadTime, imm10.data.qualitycheckdata.qcBarcode, imm10.data.qualitycheckdata.qcResult, imm10.data.qualitycheckdata.qcReason)
+                .then(() => {
+                    opcuaserver.publishImm10QualityCheckData(imm10)
+                })
+                .catch((error) => {
+                    logger.info('Failed to update quality check fields: ' + error)
+                })
+
+        }, 2000)
+        setTimeout(() => {
+            imm10.data.qualitycheckdata.qcReadTime = ''
+            imm10.data.qualitycheckdata.qcBarcode = ''
+            imm10.data.qualitycheckdata.qcResult = ''
+            imm10.data.qualitycheckdata.qcReason = ''
+        }, 4000)
+    }
+    
 }

@@ -16,7 +16,8 @@ interface ProcessAttributes {
   scrap_reason: number;
   energy: object;
   cycle: object;
-  secondarydata: object;
+  production: object;
+  qualitycheckdata: object;
   createdAt?: Date; // Add optional createdAt field
   updatedAt?: Date; // Add optional updatedAt field
 }
@@ -36,7 +37,8 @@ class Process extends Model<ProcessAttributes> implements ProcessAttributes {
   public scrap_reason!: number;
   public energy!: object;
   public cycle!: object;
-  public secondarydata!: object;
+  public production!: object;
+  public qualitycheckdata!: object;
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -72,7 +74,7 @@ Process.init(
       type: DataTypes.STRING,
     },
     weight: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
     },
     scrap_barcode: {
       type: DataTypes.STRING,
@@ -86,7 +88,10 @@ Process.init(
     cycle: {
       type: DataTypes.JSONB,
     },
-    secondarydata: {
+    production: {
+      type: DataTypes.JSONB,
+    },
+    qualitycheckdata: {
       type: DataTypes.JSONB,
     },
     createdAt: {

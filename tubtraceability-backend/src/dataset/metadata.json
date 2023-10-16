@@ -1,6 +1,6 @@
 {
     "seq": 2,
-    "hashVersion": 194001958,
+    "hashVersion": 225559033,
     "connections": [
         {
             "name": "plc",
@@ -4990,6 +4990,358 @@
                         {
                             "name": "DB_EDGE.IMM10.PartData.barcodeReadTime",
                             "id": "723",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM2.PartData.production.shiftTotalpart",
+                            "id": "724",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM2.PartData.production.shiftTotalkg",
+                            "id": "725",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM2.PartData.production.oeeHour",
+                            "id": "726",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM2.PartData.production.oeeShift",
+                            "id": "727",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM3.PartData.production.shiftTotalpart",
+                            "id": "728",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM3.PartData.production.shiftTotalkg",
+                            "id": "729",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM3.PartData.production.oeeHour",
+                            "id": "730",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM3.PartData.production.oeeShift",
+                            "id": "731",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM4.PartData.production.shiftTotalpart",
+                            "id": "732",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM4.PartData.production.shiftTotalkg",
+                            "id": "733",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM4.PartData.production.oeeHour",
+                            "id": "734",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM4.PartData.production.oeeShift",
+                            "id": "735",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM5.PartData.production.shiftTotalpart",
+                            "id": "736",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM5.PartData.production.shiftTotalkg",
+                            "id": "737",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM5.PartData.production.oeeHour",
+                            "id": "738",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM5.PartData.production.oeeShift",
+                            "id": "739",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM6.PartData.production.shiftTotalpart",
+                            "id": "740",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM6.PartData.production.shiftTotalkg",
+                            "id": "741",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM6.PartData.production.oeeHour",
+                            "id": "742",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM6.PartData.production.oeeShift",
+                            "id": "743",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM7.PartData.production.shiftTotalpart",
+                            "id": "744",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM7.PartData.production.shiftTotalkg",
+                            "id": "745",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM7.PartData.production.oeeHour",
+                            "id": "746",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM7.PartData.production.oeeShift",
+                            "id": "747",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM8.PartData.production.shiftTotalpart",
+                            "id": "748",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM8.PartData.production.shiftTotalkg",
+                            "id": "749",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM8.PartData.production.oeeHour",
+                            "id": "750",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM8.PartData.production.oeeShift",
+                            "id": "751",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.PartData.production.shiftTotalpart",
+                            "id": "752",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.PartData.production.shiftTotalkg",
+                            "id": "753",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.PartData.production.oeeHour",
+                            "id": "754",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.PartData.production.oeeShift",
+                            "id": "755",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.PartData.production.shiftTotalpart",
+                            "id": "756",
+                            "dataType": "Int",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.PartData.production.shiftTotalkg",
+                            "id": "757",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.PartData.production.oeeHour",
+                            "id": "758",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.PartData.production.oeeShift",
+                            "id": "759",
+                            "dataType": "Real",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.QualityCheckData.qcReadTime",
+                            "id": "760",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.QualityCheckData.qcBarcode",
+                            "id": "761",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.QualityCheckData.qcResult",
+                            "id": "762",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM9.QualityCheckData.qcReason",
+                            "id": "763",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.QualityCheckData.qcReadTime",
+                            "id": "764",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.QualityCheckData.qcBarcode",
+                            "id": "765",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.QualityCheckData.qcResult",
+                            "id": "766",
+                            "dataType": "String",
+                            "accessMode": "rw",
+                            "acquisitionCycleInMs": 2000,
+                            "acquisitionMode": "CyclicOnChange"
+                        },
+                        {
+                            "name": "DB_EDGE.IMM10.QualityCheckData.qcReason",
+                            "id": "767",
                             "dataType": "String",
                             "accessMode": "rw",
                             "acquisitionCycleInMs": 2000,

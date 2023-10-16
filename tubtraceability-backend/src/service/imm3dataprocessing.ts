@@ -118,8 +118,7 @@ const imm3DataProcessing = {
             resetTimer()
             // Check barcode
             if (imm3.data.part.barcode !== datamatrix[counter]) {
-                logger.info('Barcode read is failed. Print request is sent to label printer')
-                imm3.data.part.barcode = 'ReadError'
+                logger.info(`IMM3 Barcode read is failed. Datamatrix: ${datamatrix[counter]} Barcode: ${imm3.data.part.barcode} Print request is sent to LABEL3 printer`)                
                 labelPrinter.send(labelCommand[counter])
             }
 
@@ -134,9 +133,9 @@ const imm3DataProcessing = {
             opcuaserver.publishImm3(imm3)
 
             // Reset OPC UA Data
-            setTimeout(() => {
-                opcuaserver.publishImm3(imm3Reset)
-            }, 2000);
+            // setTimeout(() => {
+            //     opcuaserver.publishImm3(imm3Reset)
+            // }, 2000);
 
             // Reset Barcode
             imm3.data.part.barcode = ''
@@ -158,13 +157,13 @@ export default imm3DataProcessing
 function startTimer() {
 
     timer = setTimeout(() => {
-        logger.info('Barcode reading timeout')
+        logger.info('IMM3 Barcode reading timeout')
         const inactiveTime = getTimeDifferenceInSeconds(imm3?.data?.part?.lastCycleEndTime)
         logger.info('Inactive Duration: ' + inactiveTime)
         const isMachineActive = (inactiveTime < 300 ? true : false) || false
 
         if (isMachineActive) {
-            logger.info('Machine is running')
+            logger.info('IMM3 is running')
             setTimeout(() => {
                 imm3DataProcessing.startDataProcessing()
             }, 1000);
@@ -174,7 +173,7 @@ function startTimer() {
             }, 3000);
         }
         else {
-            logger.info('Machine is not running')
+            logger.info('IMM3 is not running')
             inkjetPrinter.send(inkjetResetCommand)
             process = false
             resetTimer()

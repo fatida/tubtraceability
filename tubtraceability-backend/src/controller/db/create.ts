@@ -18,11 +18,12 @@ export function crateProcessRecord(imm: IIMM) {
     materialdescription: imm?.data?.part?.materialDescription || '',
     barcode: imm?.data?.part?.barcode || '',
     weight: imm?.data?.part?.weight || 0,
-    scrap_barcode: imm?.data?.scrap?.scrapBarcode || '',
-    scrap_reason: imm?.data?.scrap?.scrapReason || 0,
+    scrap_barcode:'',
+    scrap_reason: 0,
     energy: imm?.data?.energy || {},
     cycle: imm?.data?.cycle || {},
-    secondarydata: imm?.data?.secondarydata || {}
+    production: imm?.data?.production || {},
+    qualitycheckdata: imm?.data?.qualitycheckdata || {}
   }
 
   process.create(data)
@@ -30,14 +31,14 @@ export function crateProcessRecord(imm: IIMM) {
       
       logger.info('Process record saved on process table: ' + JSON.stringify(result))
 
-      const imm = result.imm
-      const datamatrix = result.datamatrix
-      const mouldid = result.mouldid
-      const moulddescription = result.moulddescription
-      const materialnumber = result.materialnumber
-      const materialdescription = result.materialdescription
-      const barcode = result.barcode
-      const date = result.date
+      const imm = result?.imm
+      const datamatrix = result?.datamatrix
+      const mouldid = result?.mouldid
+      const moulddescription = result?.moulddescription
+      const materialnumber = result?.materialnumber
+      const materialdescription = result?.materialdescription
+      const barcode = result?.barcode
+      const date = result?.date
 
       io.emit('processRecord', {
         imm,

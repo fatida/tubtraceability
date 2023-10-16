@@ -26,7 +26,7 @@ export async function getProcessRecords(req: Request, res: Response) {
 
         const records = await Process.findAll({
             where: whereCondition,
-            limit: 1000,
+            limit: 5000,
             order: [['createdAt', 'DESC']],
             attributes: ['imm', 'date', 'datamatrix', 'mouldid', 'moulddescription', 'materialnumber', 'materialdescription', 'barcode']
         });

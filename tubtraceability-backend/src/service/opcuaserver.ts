@@ -31,7 +31,6 @@ const opcuaserver = {
         }
     },
 
-
     publishImm2(imm2: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -49,6 +48,10 @@ const opcuaserver = {
             { id: "209", qc: 3, ts: timestamp, val: imm2?.data?.energy?.shiftkWh },
             { id: "210", qc: 3, ts: timestamp, val: imm2?.data?.energy?.shiftkWh_pcs },
             { id: "211", qc: 3, ts: timestamp, val: imm2?.data?.energy?.shiftkWh_kg },
+            { id: "212", qc: 3, ts: timestamp, val: imm2?.data?.production?.shiftTotalpart },
+            { id: "213", qc: 3, ts: timestamp, val: imm2?.data?.production?.shiftTotalkg },
+            { id: "214", qc: 3, ts: timestamp, val: imm2?.data?.production?.oeeHour },
+            { id: "215", qc: 3, ts: timestamp, val: imm2?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -61,8 +64,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "212", qc: 3, ts: timestamp, val: imm2?.data?.scrap?.scrapBarcode },
-            { id: "202", qc: 3, ts: timestamp, val: imm2?.data?.scrap?.scrapReason },
+            { id: "216", qc: 3, ts: timestamp, val: imm2?.data?.scrap?.scrapBarcode },
+            { id: "217", qc: 3, ts: timestamp, val: imm2?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -75,8 +78,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "212", qc: 3, ts: timestamp, val: '' },
-            { id: "202", qc: 3, ts: timestamp, val: 0 },
+            { id: "216", qc: 3, ts: timestamp, val: '' },
+            { id: "217", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -170,7 +173,11 @@ const opcuaserver = {
             { id: "381", qc: 3, ts: timestamp, val: imm3?.data?.cycle?.plasStroke },
             { id: "382", qc: 3, ts: timestamp, val: imm3?.data?.cycle?.plasVelAvg },
             { id: "383", qc: 3, ts: timestamp, val: imm3?.data?.cycle?.plasPressureAvg },
-            { id: "384", qc: 3, ts: timestamp, val: imm3?.data?.cycle?.plasPressureMax }
+            { id: "384", qc: 3, ts: timestamp, val: imm3?.data?.cycle?.plasPressureMax },
+            { id: "385", qc: 3, ts: timestamp, val: imm3?.data?.production?.shiftTotalpart },
+            { id: "386", qc: 3, ts: timestamp, val: imm3?.data?.production?.shiftTotalkg },
+            { id: "387", qc: 3, ts: timestamp, val: imm3?.data?.production?.oeeHour },
+            { id: "388", qc: 3, ts: timestamp, val: imm3?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -183,8 +190,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "385", qc: 3, ts: timestamp, val: imm3?.data?.scrap?.scrapBarcode },
-            { id: "308", qc: 3, ts: timestamp, val: imm3?.data?.scrap?.scrapReason },
+            { id: "389", qc: 3, ts: timestamp, val: imm3?.data?.scrap?.scrapBarcode },
+            { id: "390", qc: 3, ts: timestamp, val: imm3?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -197,8 +204,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "385", qc: 3, ts: timestamp, val: '' },
-            { id: "308", qc: 3, ts: timestamp, val: 0 },
+            { id: "389", qc: 3, ts: timestamp, val: '' },
+            { id: "390", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -266,7 +273,7 @@ const opcuaserver = {
             { id: "455", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.tempBrlZ09 },
             { id: "456", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.tempBrlZ10 },
             { id: "457", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.cycleTime },
-            { id: "458", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.totalCycle },
+            { id: "458", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.totalCycles },
             { id: "459", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.injTime },
             { id: "460", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.plasTime },
             { id: "461", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.coolingTime },
@@ -293,6 +300,10 @@ const opcuaserver = {
             { id: "482", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.plasVelAvg },
             { id: "483", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.plasPressureAvg },
             { id: "484", qc: 3, ts: timestamp, val: imm4?.data?.cycle?.plasPressureMax },
+            { id: "485", qc: 3, ts: timestamp, val: imm4?.data?.production?.shiftTotalpart },
+            { id: "486", qc: 3, ts: timestamp, val: imm4?.data?.production?.shiftTotalkg },
+            { id: "487", qc: 3, ts: timestamp, val: imm4?.data?.production?.oeeHour },
+            { id: "488", qc: 3, ts: timestamp, val: imm4?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -305,8 +316,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "485", qc: 3, ts: timestamp, val: imm4?.data?.scrap?.scrapBarcode },
-            { id: "408", qc: 3, ts: timestamp, val: imm4?.data?.scrap?.scrapReason },
+            { id: "489", qc: 3, ts: timestamp, val: imm4?.data?.scrap?.scrapBarcode },
+            { id: "490", qc: 3, ts: timestamp, val: imm4?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -319,11 +330,12 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "485", qc: 3, ts: timestamp, val: '' },
-            { id: "408", qc: 3, ts: timestamp, val: 0 },
+            { id: "489", qc: 3, ts: timestamp, val: '' },
+            { id: "490", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
+
     publishImm5(imm5: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -411,6 +423,10 @@ const opcuaserver = {
             { id: "579", qc: 3, ts: timestamp, val: imm5?.data?.cycle?.specPressureMax },
             { id: "580", qc: 3, ts: timestamp, val: imm5?.data?.cycle?.backPressure },
             { id: "581", qc: 3, ts: timestamp, val: imm5?.data?.cycle?.plasVelMax2 },
+            { id: "582", qc: 3, ts: timestamp, val: imm5?.data?.production?.shiftTotalpart },
+            { id: "583", qc: 3, ts: timestamp, val: imm5?.data?.production?.shiftTotalkg },
+            { id: "584", qc: 3, ts: timestamp, val: imm5?.data?.production?.oeeHour },
+            { id: "585", qc: 3, ts: timestamp, val: imm5?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -423,8 +439,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "582", qc: 3, ts: timestamp, val: imm5?.data?.scrap?.scrapBarcode },
-            { id: "508", qc: 3, ts: timestamp, val: imm5?.data?.scrap?.scrapReason },
+            { id: "586", qc: 3, ts: timestamp, val: imm5?.data?.scrap?.scrapBarcode },
+            { id: "587", qc: 3, ts: timestamp, val: imm5?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -437,12 +453,12 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "582", qc: 3, ts: timestamp, val: '' },
-            { id: "508", qc: 3, ts: timestamp, val: 0 },
+            { id: "586", qc: 3, ts: timestamp, val: '' },
+            { id: "587", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
-    
+
     publishImm6(imm6: IIMM) {
         const message: IMessage = {
             seq: 1,
@@ -510,6 +526,10 @@ const opcuaserver = {
             { id: "659", qc: 3, ts: timestamp, val: imm6?.data?.cycle?.plasPressureSpecMax },
             { id: "660", qc: 3, ts: timestamp, val: imm6?.data?.cycle?.specPressureTrnsfr },
             { id: "661", qc: 3, ts: timestamp, val: imm6?.data?.cycle?.specPressureMax },
+            { id: "662", qc: 3, ts: timestamp, val: imm6?.data?.production?.shiftTotalpart },
+            { id: "663", qc: 3, ts: timestamp, val: imm6?.data?.production?.shiftTotalkg },
+            { id: "664", qc: 3, ts: timestamp, val: imm6?.data?.production?.oeeHour },
+            { id: "665", qc: 3, ts: timestamp, val: imm6?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -522,8 +542,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "662", qc: 3, ts: timestamp, val: imm6?.data?.scrap?.scrapBarcode },
-            { id: "608", qc: 3, ts: timestamp, val: imm6?.data?.scrap?.scrapReason },
+            { id: "666", qc: 3, ts: timestamp, val: imm6?.data?.scrap?.scrapBarcode },
+            { id: "667", qc: 3, ts: timestamp, val: imm6?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -536,8 +556,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "662", qc: 3, ts: timestamp, val: '' },
-            { id: "608", qc: 3, ts: timestamp, val: 0 },
+            { id: "666", qc: 3, ts: timestamp, val: '' },
+            { id: "667", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -559,56 +579,60 @@ const opcuaserver = {
             { id: "709", qc: 3, ts: timestamp, val: imm7?.data?.energy?.shiftkWh },
             { id: "710", qc: 3, ts: timestamp, val: imm7?.data?.energy?.shiftkWh_pcs },
             { id: "711", qc: 3, ts: timestamp, val: imm7?.data?.energy?.shiftkWh_kg },
-            { id: "712", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ01 },
-            { id: "713", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ02 },
-            { id: "714", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ03 },
-            { id: "715", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ04 },
-            { id: "716", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ05 },
-            { id: "717", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ06 },
-            { id: "718", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ07 },
-            { id: "719", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ08 },
-            { id: "720", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ09 },
-            { id: "721", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ10 },
-            { id: "722", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ11 },
-            { id: "723", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ12 },
-            { id: "724", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ13 },
-            { id: "725", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ14 },
-            { id: "726", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ15 },
-            { id: "727", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ16 },
-            { id: "728", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ17 },
-            { id: "729", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ18 },
-            { id: "730", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ19 },
-            { id: "731", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ20 },
-            { id: "732", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ21 },
-            { id: "733", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ22 },
-            { id: "734", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ23 },
-            { id: "735", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempMldZ24 },
-            { id: "736", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ01 },
-            { id: "737", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ02 },
-            { id: "738", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ03 },
-            { id: "739", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ04 },
-            { id: "740", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ05 },
-            { id: "741", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ06 },
-            { id: "742", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ07 },
-            { id: "743", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempBrlZ08 },
-            { id: "744", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.tempFlngZ },
-            { id: "745", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.cycleTime },
-            { id: "746", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.totalCycles },
-            { id: "747", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.injTime },
-            { id: "748", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.plasTime },
-            { id: "749", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.meltCushion },
-            { id: "750", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.vpChngOvrPos },
-            { id: "751", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.decomStrBfrPlas },
-            { id: "752", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.decomStrAftrPlas },
-            { id: "753", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.plasStroke },
-            { id: "754", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.plasStrokeMax },
-            { id: "755", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.plasVelMax },
-            { id: "756", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.injVelAvg },
-            { id: "757", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.injVelMax },
-            { id: "758", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.holdPressureMax },
-            { id: "759", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.plasPressureSpecMax },
-            { id: "760", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.specPressureTrnsfr },
-            { id: "761", qc: 3, ts: timestamp, val: imm7?.data?.data?.cycle?.specPressureMax },
+            { id: "712", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ01 },
+            { id: "713", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ02 },
+            { id: "714", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ03 },
+            { id: "715", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ04 },
+            { id: "716", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ05 },
+            { id: "717", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ06 },
+            { id: "718", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ07 },
+            { id: "719", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ08 },
+            { id: "720", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ09 },
+            { id: "721", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ10 },
+            { id: "722", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ11 },
+            { id: "723", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ12 },
+            { id: "724", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ13 },
+            { id: "725", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ14 },
+            { id: "726", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ15 },
+            { id: "727", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ16 },
+            { id: "728", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ17 },
+            { id: "729", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ18 },
+            { id: "730", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ19 },
+            { id: "731", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ20 },
+            { id: "732", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ21 },
+            { id: "733", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ22 },
+            { id: "734", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ23 },
+            { id: "735", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempMldZ24 },
+            { id: "736", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ01 },
+            { id: "737", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ02 },
+            { id: "738", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ03 },
+            { id: "739", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ04 },
+            { id: "740", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ05 },
+            { id: "741", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ06 },
+            { id: "742", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ07 },
+            { id: "743", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempBrlZ08 },
+            { id: "744", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.tempFlngZ },
+            { id: "745", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.cycleTime },
+            { id: "746", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.totalCycles },
+            { id: "747", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.injTime },
+            { id: "748", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.plasTime },
+            { id: "749", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.meltCushion },
+            { id: "750", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.vpChngOvrPos },
+            { id: "751", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.decomStrBfrPlas },
+            { id: "752", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.decomStrAftrPlas },
+            { id: "753", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.plasStroke },
+            { id: "754", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.plasStrokeMax },
+            { id: "755", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.plasVelMax },
+            { id: "756", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.injVelAvg },
+            { id: "757", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.injVelMax },
+            { id: "758", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.holdPressureMax },
+            { id: "759", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.plasPressureSpecMax },
+            { id: "760", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.specPressureTrnsfr },
+            { id: "761", qc: 3, ts: timestamp, val: imm7?.data?.cycle?.specPressureMax },
+            { id: "762", qc: 3, ts: timestamp, val: imm7?.data?.production?.shiftTotalpart },
+            { id: "763", qc: 3, ts: timestamp, val: imm7?.data?.production?.shiftTotalkg },
+            { id: "764", qc: 3, ts: timestamp, val: imm7?.data?.production?.oeeHour },
+            { id: "765", qc: 3, ts: timestamp, val: imm7?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -621,8 +645,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "762", qc: 3, ts: timestamp, val: imm7?.data?.scrap?.scrapBarcode },
-            { id: "708", qc: 3, ts: timestamp, val: imm7?.data?.scrap?.scrapReason },
+            { id: "766", qc: 3, ts: timestamp, val: imm7?.data?.scrap?.scrapBarcode },
+            { id: "767", qc: 3, ts: timestamp, val: imm7?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -635,8 +659,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "762", qc: 3, ts: timestamp, val: '' },
-            { id: "708", qc: 3, ts: timestamp, val: 0 },
+            { id: "766", qc: 3, ts: timestamp, val: '' },
+            { id: "767", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -720,6 +744,11 @@ const opcuaserver = {
             { id: "871", qc: 3, ts: timestamp, val: imm8?.data?.cycle.energyTotalCycle },
             { id: "872", qc: 3, ts: timestamp, val: imm8?.data?.cycle.energyMainDrive },
             { id: "873", qc: 3, ts: timestamp, val: imm8?.data?.cycle.energyMoldHeating },
+            { id: "874", qc: 3, ts: timestamp, val: imm8?.data?.production?.shiftTotalpart },
+            { id: "875", qc: 3, ts: timestamp, val: imm8?.data?.production?.shiftTotalkg },
+            { id: "876", qc: 3, ts: timestamp, val: imm8?.data?.production?.oeeHour },
+            { id: "877", qc: 3, ts: timestamp, val: imm8?.data?.production?.oeeShift },
+
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -732,8 +761,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "874", qc: 3, ts: timestamp, val: imm8?.data?.scrap?.scrapBarcode },
-            { id: "808", qc: 3, ts: timestamp, val: imm8?.data?.scrap?.scrapReason },
+            { id: "878", qc: 3, ts: timestamp, val: imm8?.data?.scrap?.scrapBarcode },
+            { id: "879", qc: 3, ts: timestamp, val: imm8?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -746,8 +775,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "874", qc: 3, ts: timestamp, val: '' },
-            { id: "808", qc: 3, ts: timestamp, val: 0 },
+            { id: "878", qc: 3, ts: timestamp, val: '' },
+            { id: "879", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -768,8 +797,8 @@ const opcuaserver = {
             { id: "907", qc: 3, ts: timestamp, val: imm9?.data?.part?.materialDescription },
             { id: "908", qc: 3, ts: timestamp, val: imm9?.data?.part?.weight },
             { id: "910", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWh },
-            { id: "911", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWhPcs },
-            { id: "912", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWhKg },
+            { id: "911", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWh_pcs },
+            { id: "912", qc: 3, ts: timestamp, val: imm9?.data?.energy?.shiftkWh_kg },
             { id: "913", qc: 3, ts: timestamp, val: imm9?.data?.cycle?.tempMldZ01 },
             { id: "914", qc: 3, ts: timestamp, val: imm9?.data?.cycle?.tempMldZ02 },
             { id: "915", qc: 3, ts: timestamp, val: imm9?.data?.cycle?.tempMldZ03 },
@@ -832,8 +861,10 @@ const opcuaserver = {
             { id: "972", qc: 3, ts: timestamp, val: imm9?.data?.cycle?.energyTotalCycle },
             { id: "973", qc: 3, ts: timestamp, val: imm9?.data?.cycle?.energyMainDrive },
             { id: "974", qc: 3, ts: timestamp, val: imm9?.data?.cycle?.energyMoldHeating },
-            { id: "975", qc: 3, ts: timestamp, val: imm9?.data?.secondary?.qualityCheckBarcode },
-            { id: "976", qc: 3, ts: timestamp, val: imm9?.data?.secondary?.qualityCheckReason },
+            { id: "975", qc: 3, ts: timestamp, val: imm9?.data?.production?.shiftTotalpart },
+            { id: "976", qc: 3, ts: timestamp, val: imm9?.data?.production?.shiftTotalkg },
+            { id: "977", qc: 3, ts: timestamp, val: imm9?.data?.production?.oeeHour },
+            { id: "978", qc: 3, ts: timestamp, val: imm9?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -846,8 +877,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "977", qc: 3, ts: timestamp, val: imm9?.data?.scrap?.scrapBarcode },
-            { id: "909", qc: 3, ts: timestamp, val: imm9?.data?.scrap?.scrapReason },
+            { id: "979", qc: 3, ts: timestamp, val: imm9?.data?.scrap?.scrapBarcode },
+            { id: "980", qc: 3, ts: timestamp, val: imm9?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -862,6 +893,44 @@ const opcuaserver = {
 
             { id: "975", qc: 3, ts: timestamp, val: imm9?.data?.secondary?.qualityCheckBarcode },
             { id: "976", qc: 3, ts: timestamp, val: imm9?.data?.secondary?.qualityCheckReason },
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
+    publishImm9QualityCheckData(imm9: IIMM) {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+            { id: "9081", qc: 3, ts: timestamp, val: imm9?.data?.qualitycheckdata?.qcReadTime },
+            { id: "9082", qc: 3, ts: timestamp, val: imm9?.data?.qualitycheckdata?.qcBarcode },
+            { id: "9083", qc: 3, ts: timestamp, val: imm9?.data?.qualitycheckdata?.qcResult },
+            { id: "9084", qc: 3, ts: timestamp, val: imm9?.data?.qualitycheckdata?.qcReason },
+            { id: "9085", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[1] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[1] === '1' ? 'OK':'NOK'))},
+            { id: "9086", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[2] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[2] === '1' ? 'OK':'NOK'))},
+            { id: "9087", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[3] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[3] === '1' ? 'OK':'NOK'))},
+            { id: "9088", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[4] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[4] === '1' ? 'OK':'NOK'))},
+            { id: "9089", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[5] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[5] === '1' ? 'OK':'NOK'))},
+            { id: "9090", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[6] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[6] === '1' ? 'OK':'NOK'))},
+            { id: "9091", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[7] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[7] === '1' ? 'OK':'NOK'))},
+            { id: "9092", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[8] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[8] === '1' ? 'OK':'NOK'))},
+            { id: "9093", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[9] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[9] === '1' ? 'OK':'NOK'))},
+            { id: "9094", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[10] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[10] === '1' ? 'OK':'NOK'))},
+            { id: "9095", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[11] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[11] === '1' ? 'OK':'NOK'))},
+            { id: "9096", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[12] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[12] === '1' ? 'OK':'NOK'))},
+            { id: "9097", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[13] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[13] === '1' ? 'OK':'NOK'))},
+            { id: "9098", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[14] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[14] === '1' ? 'OK':'NOK'))},
+            { id: "9099", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[15] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[15] === '1' ? 'OK':'NOK'))},
+            { id: "9100", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[16] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[16] === '1' ? 'OK':'NOK'))},
+            { id: "9101", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[17] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[17] === '1' ? 'OK':'NOK'))},
+            { id: "9102", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[18] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[18] === '1' ? 'OK':'NOK'))},
+            { id: "9103", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[19] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[19] === '1' ? 'OK':'NOK'))},
+            { id: "9104", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[20] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[20] === '1' ? 'OK':'NOK'))},
+            { id: "9105", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[21] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[21] === '1' ? 'OK':'NOK'))},
+            { id: "9106", qc: 3, ts: timestamp, val: (imm9?.data?.qualitycheckdata?.qcReason[22] === '0' ? 'NA' : (imm9?.data?.qualitycheckdata?.qcReason[22] === '1' ? 'OK':'NOK'))},
+            
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -888,7 +957,7 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "975", qc: 3, ts: timestamp, val: ''},
+            { id: "975", qc: 3, ts: timestamp, val: '' },
             { id: "976", qc: 3, ts: timestamp, val: '' },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
@@ -910,8 +979,8 @@ const opcuaserver = {
             { id: "1007", qc: 3, ts: timestamp, val: imm10?.data?.part?.materialDescription },
             { id: "1008", qc: 3, ts: timestamp, val: imm10?.data?.part?.weight },
             { id: "1010", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWh },
-            { id: "1011", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWhPcs },
-            { id: "1012", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWhKg },
+            { id: "1011", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWh_pcs },
+            { id: "1012", qc: 3, ts: timestamp, val: imm10?.data?.energy?.shiftkWh_kg },
             { id: "1013", qc: 3, ts: timestamp, val: imm10?.data?.cycle?.tempMldZ01 },
             { id: "1014", qc: 3, ts: timestamp, val: imm10?.data?.cycle?.tempMldZ02 },
             { id: "1015", qc: 3, ts: timestamp, val: imm10?.data?.cycle?.tempMldZ03 },
@@ -974,8 +1043,10 @@ const opcuaserver = {
             { id: "1072", qc: 3, ts: timestamp, val: imm10?.data?.cycle?.energyTotalCycle },
             { id: "1073", qc: 3, ts: timestamp, val: imm10?.data?.cycle?.energyMainDrive },
             { id: "1074", qc: 3, ts: timestamp, val: imm10?.data?.cycle?.energyMoldHeating },
-            { id: "1075", qc: 3, ts: timestamp, val: imm10?.data?.secondary?.qualityCheckBarcode },
-            { id: "1076", qc: 3, ts: timestamp, val: imm10?.data?.secondary?.qualityCheckReason },
+            { id: "1075", qc: 3, ts: timestamp, val: imm10?.data?.production?.shiftTotalpart },
+            { id: "1076", qc: 3, ts: timestamp, val: imm10?.data?.production?.shiftTotalkg },
+            { id: "1077", qc: 3, ts: timestamp, val: imm10?.data?.production?.oeeHour },
+            { id: "1078", qc: 3, ts: timestamp, val: imm10?.data?.production?.oeeShift },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -988,8 +1059,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "1077", qc: 3, ts: timestamp, val: imm10?.data?.scrap?.scrapBarcode },
-            { id: "1009", qc: 3, ts: timestamp, val: imm10?.data?.scrap?.scrapReason },
+            { id: "1079", qc: 3, ts: timestamp, val: imm10?.data?.scrap?.scrapBarcode },
+            { id: "1080", qc: 3, ts: timestamp, val: imm10?.data?.scrap?.scrapReason },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -1002,8 +1073,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "1077", qc: 3, ts: timestamp, val: '' },
-            { id: "1009", qc: 3, ts: timestamp, val: 0 },
+            { id: "1079", qc: 3, ts: timestamp, val: '' },
+            { id: "1080", qc: 3, ts: timestamp, val: 0 },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
@@ -1022,6 +1093,43 @@ const opcuaserver = {
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },
 
+    publishImm10QualityCheckData(imm10: IIMM) {
+        const message: IMessage = {
+            seq: 1,
+            vals: []
+        };
+        const timestamp = (new Date()).toString()
+        message.vals = [
+            { id: "1081", qc: 3, ts: timestamp, val: imm10?.data?.qualitycheckdata?.qcReadTime },
+            { id: "1082", qc: 3, ts: timestamp, val: imm10?.data?.qualitycheckdata?.qcBarcode },
+            { id: "1083", qc: 3, ts: timestamp, val: imm10?.data?.qualitycheckdata?.qcResult },
+            { id: "1084", qc: 3, ts: timestamp, val: imm10?.data?.qualitycheckdata?.qcReason },
+            { id: "1085", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[1] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[1] === '1' ? 'OK':'NOK'))},
+            { id: "1086", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[2] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[2] === '1' ? 'OK':'NOK'))},
+            { id: "1087", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[3] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[3] === '1' ? 'OK':'NOK'))},
+            { id: "1088", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[4] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[4] === '1' ? 'OK':'NOK'))},
+            { id: "1089", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[5] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[5] === '1' ? 'OK':'NOK'))},
+            { id: "1090", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[6] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[6] === '1' ? 'OK':'NOK'))},
+            { id: "1091", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[7] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[7] === '1' ? 'OK':'NOK'))},
+            { id: "1092", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[8] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[8] === '1' ? 'OK':'NOK'))},
+            { id: "1093", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[9] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[9] === '1' ? 'OK':'NOK'))},
+            { id: "1094", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[10] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[10] === '1' ? 'OK':'NOK'))},
+            { id: "1095", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[11] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[11] === '1' ? 'OK':'NOK'))},
+            { id: "1096", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[12] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[12] === '1' ? 'OK':'NOK'))},
+            { id: "1097", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[13] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[13] === '1' ? 'OK':'NOK'))},
+            { id: "1098", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[14] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[14] === '1' ? 'OK':'NOK'))},
+            { id: "1099", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[15] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[15] === '1' ? 'OK':'NOK'))},
+            { id: "1100", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[16] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[16] === '1' ? 'OK':'NOK'))},
+            { id: "1101", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[17] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[17] === '1' ? 'OK':'NOK'))},
+            { id: "1102", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[18] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[18] === '1' ? 'OK':'NOK'))},
+            { id: "1103", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[19] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[19] === '1' ? 'OK':'NOK'))},
+            { id: "1104", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[20] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[20] === '1' ? 'OK':'NOK'))},
+            { id: "1105", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[21] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[21] === '1' ? 'OK':'NOK'))},
+            { id: "1106", qc: 3, ts: timestamp, val: (imm10?.data?.qualitycheckdata?.qcReason[22] === '0' ? 'NA' : (imm10?.data?.qualitycheckdata?.qcReason[22] === '1' ? 'OK':'NOK'))},
+        ]
+        mqttClient.publish(config.opcuaserver.subscribe, message)
+    },
+
     publishImm10SecondaryReset() {
         const message: IMessage = {
             seq: 1,
@@ -1030,8 +1138,8 @@ const opcuaserver = {
         const timestamp = (new Date()).toString()
         message.vals = [
 
-            { id: "1075", qc: 3, ts: timestamp, val: ''},
-            { id: "1076", qc: 3, ts: timestamp, val: ''},
+            { id: "1075", qc: 3, ts: timestamp, val: '' },
+            { id: "1076", qc: 3, ts: timestamp, val: '' },
         ]
         mqttClient.publish(config.opcuaserver.subscribe, message)
     },

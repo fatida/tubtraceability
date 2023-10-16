@@ -6,16 +6,25 @@ import { config } from './config/config'
 import express from 'express'
 import router from './controller/api/route'
 import http from 'http' 
-
+import cors from 'cors'
 import WebSocketManager from './utility/websocket' 
 
 const app = express()
+const server = http.createServer(app)
+const webSocketManager = WebSocketManager.getInstance()
+
+// Move these lines above app.use('/', router)
 app.use(express.json())
+
+const corsOptions = {
+  origin: '*', // or specify your frontend's origin (e.g., http://localhost:8081)
+  credentials: true,  // Allow cookies and credentials
+};
+
+app.use(cors(corsOptions))
 app.use('/', router)
 
-const server = http.createServer(app) // Create an HTTP server using the express app
 
-const webSocketManager = WebSocketManager.getInstance() // Get the WebSocketManager instance
 
 // Connect and Sync to DB
 const connectToDB = async () => {

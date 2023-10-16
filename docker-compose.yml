@@ -21,6 +21,8 @@ services:
     image: tubtraceability-backend
     build: ./tubtraceability-backend
     container_name: tubtraceability-backend
+    ports:
+      - 3000:3000
     environment:
       - TZ=Europe/Istanbul
     networks:
@@ -29,27 +31,22 @@ services:
     volumes:
       - './publish/:/publish/'
       - './cfg-data/:/cfg-data/'
+      - './tubtraceability-backend-logs/:/app/dist/logs'
+
+
   # tubtraceability_frontend:
-  #   image: tubtraceability_frontend
-  #   build: ./tubtraceability_frontend
-  #   container_name: tubtraceability_frontend
+  #   image: tubtraceability-frontend
+  #   build: ./tubtraceability-frontend
+  #   container_name: tubtraceability-frontend
   #   ports:
   #     - 3001:3001
   #   networks:
   #     - "proxy-redirect"
   #   mem_limit: 1024mb
-  #   depends_on:
-  #     - tubtraceability-database
-  #     - tubtraceability-backend
   #   volumes:
   #     - './publish/:/publish/'
   #     - './cfg-data/:/cfg-data/'
-  #   healthcheck:
-  #     test: [ "CMD", "curl", "-f", "http://localhost:3001" ]
-  #     interval: 30s
-  #     timeout: 10s
-  #     retries: 10
-  #     start_period: 160s
+
 
 networks:
   proxy-redirect:

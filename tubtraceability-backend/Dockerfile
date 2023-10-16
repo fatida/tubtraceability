@@ -1,6 +1,6 @@
 FROM node:20.7.0-alpine3.17
 
-WORKDIR /app
+WORKDIR /tubtraceability-backend
 
 COPY package.json .
 
@@ -11,3 +11,4 @@ COPY . .
 RUN npm run build
 
 CMD ["node", "index.js"]
+

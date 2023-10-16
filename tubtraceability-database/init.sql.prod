@@ -9,27 +9,29 @@ CREATE TABLE IF NOT EXISTS process (
     materialnumber VARCHAR(255),
     materialdescription VARCHAR(255),
     barcode VARCHAR(255),
-    weight INT,
+    weight FLOAT,
     scrap_barcode VARCHAR(255),
     scrap_reason INT,
     energy JSONB,
     cycle JSONB,
-    secondarydata JSONB,
+    production JSONB,
+    qualitycheckdata JSONB,
     created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
--- Insert initial process data for each IMM
-INSERT INTO process (uniqueid, IMM, date, datamatrix, mouldid, moulddescription, materialnumber, materialdescription, barcode, weight, scrap_barcode, scrap_reason, energy, cycle, secondarydata)
+-- Insert initial process data for each imm
+INSERT INTO process (uniqueid, imm, date, datamatrix, mouldid, moulddescription, materialnumber, materialdescription, barcode, weight, scrap_barcode, scrap_reason, energy, cycle, production, qualitycheckdata )
 VALUES 
-    (20000000, 'IMM2', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (30000000, 'IMM3', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (40000000, 'IMM4', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (50000000, 'IMM5', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (60000000, 'IMM6', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (70000000, 'IMM7', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (80000000, 'IMM8', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (90000000, 'IMM9', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}'),
-    (10000000, 'IMM10', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}');
+    (20000000, 'IMM2', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (30000000, 'IMM3', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (40000000, 'IMM4', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (50000000, 'IMM5', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (60000000, 'IMM6', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (70000000, 'IMM7', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (80000000, 'IMM8', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (90000000, 'IMM9', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}'),
+    (10000000, 'IMM10', '1970-01-01', '', '', '', '', '', '', 0, '', 0, '{}', '{}', '{}', '{}');
+
 
 -- Create printer table if it doesn't exist
 CREATE TABLE IF NOT EXISTS printer (

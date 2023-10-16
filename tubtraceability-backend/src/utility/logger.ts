@@ -6,10 +6,10 @@ const logsDirectory = path.join(__dirname, '..', 'logs');
 
 const transport = new DailyRotateFile({
   filename: path.join(logsDirectory, 'application-%DATE%.log'),
-  datePattern: 'YYYY-MM-DD-HH-MM',
-  zippedArchive: false,
-  maxSize: '10m',
-  maxFiles: '14d'
+  datePattern: 'YYYY-MM-DD',
+  zippedArchive: true,
+  maxSize: '20m',
+  maxFiles: '7d'
 });
 
 const logger = createLogger({

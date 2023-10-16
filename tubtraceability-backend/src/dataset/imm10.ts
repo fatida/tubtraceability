@@ -1,4 +1,4 @@
-import {IIMM} from './common'
+import { IIMM } from './common'
 
 export const imm10: IIMM = {
     uniqueid: 0,
@@ -93,6 +93,18 @@ export const imm10: IIMM = {
         secondary: {
             qualitycheckBarcode: '713',
             qualitycheckReason: '714'
+        },
+        production: {
+            shiftTotalpart: '756',
+            shiftTotalkg: '757',
+            oeeHour: '758',
+            oeeShift: '759'
+        },
+        qualitycheckdata: {
+            qcReadTime: '764',
+            qcBarcode: '765',
+            qcResult: '766',
+            qcReason: '767'
         }
     },
     data: {
@@ -183,6 +195,18 @@ export const imm10: IIMM = {
         secondary: {
             qualitycheckBarcode: '',
             qualitycheckReason: '',
+        },
+        production: {
+            shiftTotalpart: 0,
+            shiftTotalkg: 0,
+            oeeHour: 0,
+            oeeShift: 0
+        },
+        qualitycheckdata: {
+            qcReadTime: '',
+            qcBarcode: '',
+            qcResult: '',
+            qcReason: ''
         }
     },
 }

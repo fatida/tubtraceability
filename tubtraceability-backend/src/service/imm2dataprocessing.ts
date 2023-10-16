@@ -70,7 +70,7 @@ const imm2DataProcessing = {
         const formattedDate = now.toLocaleDateString('tr-TR', {
             day: '2-digit',
             month: '2-digit',
-            year: '2-digit',
+            year: 'numeric',
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
@@ -130,8 +130,7 @@ const imm2DataProcessing = {
             resetTimer()
             // Check barcode
             if (imm2.data.part.barcode !== datamatrix[counter]) {
-                logger.info('Barcode read is failed. Print request is sent to label printer')
-                imm2.data.part.barcode = 'ReadError'
+                logger.info(`IMM2 Barcode read is failed. Datamatrix: ${datamatrix[counter]} Barcode: ${imm2.data.part.barcode} Print request is sent to LABEL2 printer`)                
                 labelPrinter.send(labelCommand[counter])
             }
 
@@ -146,9 +145,9 @@ const imm2DataProcessing = {
             opcuaserver.publishImm2(imm2)
 
             // Reset OPC UA Data
-            setTimeout(() => {
-                opcuaserver.publishImm2(imm2Reset)
-            }, 2000);
+            // setTimeout(() => {
+            //     opcuaserver.publishImm2(imm2Reset)
+            // }, 2000);
 
             // Reset Barcode
             imm2.data.part.barcode = ''
@@ -171,12 +170,12 @@ export default imm2DataProcessing
 
 function startTimer() {
     timer = setTimeout(() => {
-        logger.info('Barcode reading timeout')
+        logger.info('IMM2 Barcode reading timeout')
 
         const isMachineActive = timeoutCounter < 4 ? true : false
 
         if (isMachineActive) {
-            logger.info('Machine is running')
+            logger.info('IMM2 is running')
             setTimeout(() => {
                 imm2DataProcessing.startDataProcessing()
             }, 1000);
@@ -189,8 +188,8 @@ function startTimer() {
         }
         else {
             // Update Machine Status
-            updateMachineStatus(imm2.imm, 0)
-            logger.info('Machine is not running')
+            updateMachineStatus(imm2.imm, 3)
+            logger.info('IMM2 is not running')
             timeoutCounter = 0
             resetTimer()
         }

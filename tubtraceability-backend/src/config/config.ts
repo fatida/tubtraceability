@@ -36,6 +36,7 @@ export const config = {
 //         url: 'mqtt://ie-databus',
 //         username: 'edge',
 //         password: 'edge',
+//         client: 'S7Connector',
 //         subscribe: 'ie/d/j/simatic/v1/s7c1/dp/r/plc/default',
 //         publish: 'ie/d/j/simatic/v1/s7c1/dp/w/plc'
 //     },
@@ -43,6 +44,7 @@ export const config = {
 //         url: 'mqtt://ie-databus',
 //         username: 'edge',
 //         password: 'edge',
+//         client: 'OPCUAServer',
 //         subscribe: 'ie/d/j/simatic/v1/opcua1/dp/r/opcua/default',
 //         publish: 'ie/d/j/simatic/v1/opcua1/dp/w',
 //         meta: 'ie/m/j/simatic/v1/opcua1/dp'

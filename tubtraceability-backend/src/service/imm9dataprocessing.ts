@@ -85,8 +85,7 @@ const imm9DataProcessing = {
 
             // Check barcode
             if (imm9.data.part.barcode !== imm9.datamatrix) {
-                logger.info('Barcode read is failed. Print request is sent to label printer')
-                imm9.data.part.barcode = 'ReadError'
+                logger.info(`IMM9 Barcode read is failed. Datamatrix: ${imm9.datamatrix} Barcode: ${imm9.data.part.barcode} Print request is sent to LABEL9 printer`)                
                 labelPrinter.send(labelCommand)
             }
 
@@ -95,10 +94,12 @@ const imm9DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm9(imm9)
+
             // Reset OPC UA Data
-            setTimeout(() => {
-                opcuaserver.publishImm9(imm9Reset)
-            }, 2000);
+            // setTimeout(() => {
+            //     opcuaserver.publishImm9(imm9Reset)
+            // }, 2000);
+
             // Reset Barcode
             imm9.data.part.barcode = ''
 
@@ -115,16 +116,16 @@ export default imm9DataProcessing
 
 function startTimer() {
     timer = setTimeout(() => {
-        logger.info('Barcode reading timeout')
+        logger.info('IMM9 Barcode reading timeout')
         const inactiveTime = getTimeDifferenceInSeconds(imm9?.data?.part?.lastCycleEndTime)
         const isMachineActive = (inactiveTime < 300 ? true : false) || false
 
         if (isMachineActive) {
-            logger.info('Machine is running')
+            logger.info('IMM9 is running')
             imm9DataProcessing.startDataProcessing()
         }
         else {
-            logger.info('Machine is not running')
+            logger.info('IMM9 is not running')
             inkjetPrinter.send(inkjetResetCommand)
             process = false
             resetTimer()

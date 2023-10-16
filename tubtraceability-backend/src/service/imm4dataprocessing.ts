@@ -118,8 +118,7 @@ const imm4DataProcessing = {
             resetTimer()
             // Check barcode
             if (imm4.data.part.barcode !== datamatrix[counter]) {
-                logger.info('Barcode read is failed. Print request is sent to label printer')
-                imm4.data.part.barcode = 'ReadError'
+                logger.info(`IMM4 Barcode read is failed. Datamatrix: ${datamatrix[counter]} Barcode: ${imm4.data.part.barcode} Print request is sent to LABEL4 printer`)                
                 labelPrinter.send(labelCommand[counter])
             }
 
@@ -132,10 +131,12 @@ const imm4DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm4(imm4)
+            
             // Reset OPC UA Data
-            setTimeout(() => {
-                opcuaserver.publishImm4(imm4Reset)
-            }, 2000);
+            // setTimeout(() => {
+            //     opcuaserver.publishImm4(imm4Reset)
+            // }, 2000);
+
             // Reset Barcode
             imm4.data.part.barcode = ''
 
@@ -156,13 +157,13 @@ export default imm4DataProcessing
 function startTimer() {
 
     timer = setTimeout(() => {
-        logger.info('Barcode reading timeout')
+        logger.info('IMM4 Barcode reading timeout')
         const inactiveTime = getTimeDifferenceInSeconds(imm4?.data?.part?.lastCycleEndTime)
         logger.info('Inactive Duration: ' + inactiveTime)
         const isMachineActive = (inactiveTime < 300 ? true : false) || false
 
         if (isMachineActive) {
-            logger.info('Machine is running')
+            logger.info('IMM4 is running')
             setTimeout(() => {
                 imm4DataProcessing.startDataProcessing()
             }, 1000);
@@ -172,7 +173,7 @@ function startTimer() {
             }, 3000);
         }
         else {
-            logger.info('Machine is not running')
+            logger.info('IMM4 is not running')
             inkjetPrinter.send(inkjetResetCommand)
             process = false
             resetTimer()

@@ -85,8 +85,7 @@ const imm8DataProcessing = {
 
             // Check barcode
             if (imm8.data.part.barcode !== imm8.datamatrix) {
-                logger.info('Barcode read is failed. Print request is sent to label printer')
-                imm8.data.part.barcode = 'ReadError'
+                logger.info(`IMM8 Barcode read is failed. Datamatrix: ${imm8.datamatrix} Barcode: ${imm8.data.part.barcode} Print request is sent to LABEL8 printer`)                
                 labelPrinter.send(labelCommand)
             }
 
@@ -95,10 +94,12 @@ const imm8DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm8(imm8)
+
             // Reset OPC UA Data
-            setTimeout(() => {
-                opcuaserver.publishImm8(imm8Reset)
-            }, 2000);
+            // setTimeout(() => {
+            //     opcuaserver.publishImm8(imm8Reset)
+            // }, 2000);
+
             // Reset Barcode
             imm8.data.part.barcode = ''
 
@@ -115,22 +116,22 @@ export default imm8DataProcessing
 
 function startTimer() {
     timer = setTimeout(() => {
-        logger.info('Barcode reading timeout')
+        logger.info('IMM8 Barcode reading timeout')
         const inactiveTime = getTimeDifferenceInSeconds(imm8?.data?.part?.lastCycleEndTime)
         const isMachineActive = (inactiveTime < 300 ? true : false) || false
 
         if (isMachineActive) {
-            logger.info('Machine is running')
+            logger.info('IMM8 is running')
             imm8DataProcessing.startDataProcessing()
         }
         else {
-            logger.info('Machine is not running')
+            logger.info('IMM8 is not running')
             inkjetPrinter.send(inkjetResetCommand)
             process = false
             resetTimer()
         }
 
-    }, 6000)
+    }, 60000)
 }
 
 function resetTimer() {

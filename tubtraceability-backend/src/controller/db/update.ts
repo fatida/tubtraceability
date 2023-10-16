@@ -6,46 +6,103 @@ import WebSocketManager from '../../utility/websocket'
 const webSocketManager = WebSocketManager.getInstance()
 const io = webSocketManager.getIo()
 
-export async function updateScrapFields(datamatrix: string, newScrapBarcode: string, newScrapReason: number) {
-  try {
-    const [updatedRowsCount] = await Process.update(
-      {
-        scrap_barcode: newScrapBarcode,
-        scrap_reason: newScrapReason,
-      },
-      {
+export async function updateScrapFields(scrapBarcode: string, scrapReason: number) {
+  return new Promise<void>(async (resolve, reject) => {
+    try {
+      const existingRecord = await Process.findOne({
         where: {
-          datamatrix: datamatrix,
+          datamatrix: scrapBarcode,
         },
-      }
-    )
+      });
 
-    logger.info(`Updated ${updatedRowsCount} rows.`)
-  } catch (error) {
-    logger.error('Error updating scrap fields:', error)
-  }
+      if (existingRecord) {
+        await Process.update(
+          {
+            scrap_barcode: scrapBarcode,
+            scrap_reason: scrapReason,
+          },
+          {
+            where: {
+              datamatrix: scrapBarcode,
+            },
+          }
+        );
+
+        logger.info(`Scrap fields are updated for ${scrapBarcode}.`);
+        resolve(); // Resolve the promise if update is successful
+      } else {
+        logger.error(`Record with datamatrix ${scrapBarcode} not found.`);
+        reject(new Error(`Record with datamatrix ${scrapBarcode} not found.`)); // Reject the promise if record is not found
+      }
+    } catch (error) {
+      logger.error('Error updating scrap fields:', error);
+      reject(error); // Reject the promise in case of an error
+    }
+  });
 }
 
-export async function updateSecondaryFields(datamatrix: string, qualityCheckBarcode: string, qualityCheckReason: string) {
-  try {
-    const [updatedRowsCount] = await Process.update(
+
+// export async function updateQualityCheckFields(qualityCheckReadTime: string, qualityCheckBarcode: string, qualityCheckResult: string, qualityCheckReason: string) {
+//   try {
+//     await Process.update(
+//       {
+//         qualitycheckdata: {
+//           qcReadTime: qualityCheckReadTime,
+//           qcBarcode: qualityCheckBarcode,
+//           qcResult: qualityCheckResult,
+//           qcReason: qualityCheckReason  
+//         }
+//       },
+//       {
+//         where: {
+//           datamatrix: qualityCheckBarcode,
+//         },
+//       }
+//     )
+
+//     logger.info(`Quality Check data fields are updated for ${qualityCheckBarcode} rows.`)
+//   } catch (error) {
+//     logger.error('Error updating Quality Check fields:', error)
+//   }
+// }
+
+export async function updateQualityCheckFields(qualityCheckReadTime: string, qualityCheckBarcode: string, qualityCheckResult: string, qualityCheckReason: string) {
+  return new Promise<void>(async (resolve, reject) => {
+    try {
+      const existingRecord = await Process.findOne({
+        where: {
+          datamatrix: qualityCheckBarcode,
+        },
+      });
+
+      if (existingRecord) {
+        await Process.update(
       {
-        secondarydata: {
-          qualitycheckBarcode: qualityCheckBarcode,
-          qualitycheckReason: qualityCheckReason,
+        qualitycheckdata: {
+          qcReadTime: qualityCheckReadTime,
+          qcBarcode: qualityCheckBarcode,
+          qcResult: qualityCheckResult,
+          qcReason: qualityCheckReason  
         }
       },
       {
         where: {
-          datamatrix: datamatrix,
+          datamatrix: qualityCheckBarcode,
         },
       }
-    )
+        );
 
-    logger.info(`Updated ${updatedRowsCount} rows.`)
-  } catch (error) {
-    logger.error('Error updating scrap fields:', error)
-  }
+        logger.info(`Quality check fields are updated for ${qualityCheckBarcode}.`);
+        resolve(); // Resolve the promise if update is successful
+      } else {
+        logger.error(`Record with datamatrix ${qualityCheckBarcode} not found.`);
+        reject(new Error(`Record with datamatrix ${qualityCheckBarcode} not found.`)); // Reject the promise if record is not found
+      }
+    } catch (error) {
+      logger.error('Error updating quality check fields:', error);
+      reject(error); // Reject the promise in case of an error
+    }
+  });
 }
 
 export async function updateMachineStatus(machine: string, status: number): Promise<void> {

@@ -47,16 +47,6 @@ export const opcuaservermetadata = {
               "dataType": "String"
             },
             {
-              "name": "IMM2.ScreapBarcode",
-              "id": "212",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM2.ScreapReason",
-              "id": "208",
-              "dataType": "LReal"
-            },
-            {
               "name": "IMM2.Energy.ShiftkWh",
               "id": "209",
               "dataType": "LReal"
@@ -69,6 +59,36 @@ export const opcuaservermetadata = {
             {
               "name": "IMM2.Energy.ShiftkWhKg",
               "id": "211",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM2.Production.shiftTotalpart",
+              "id": "212",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM2.Production.shiftTotalkg",
+              "id": "213",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM2.Production.oeeHour",
+              "id": "214",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM2.Production.oeeShift",
+              "id": "215",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM2.ScreapBarcode",
+              "id": "216",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM2.ScreapReason",
+              "id": "217",
               "dataType": "LReal"
             },
             {
@@ -105,16 +125,6 @@ export const opcuaservermetadata = {
               "name": "IMM3.MaterialDescription",
               "id": "307",
               "dataType": "String"
-            },
-            {
-              "name": "IMM3.ScreapBarcode",
-              "id": "385",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM3.ScreapReason",
-              "id": "308",
-              "dataType": "LReal"
             },
             {
               "name": "IMM3.Energy.ShiftkWh",
@@ -497,6 +507,36 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
+              "name": "IMM3.Production.shiftTotalpart",
+              "id": "385",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM3.Production.shiftTotalkg",
+              "id": "386",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM3.Production.oeeHour",
+              "id": "387",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM3.Production.oeeShift",
+              "id": "388",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM3.ScreapBarcode",
+              "id": "389",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM3.ScreapReason",
+              "id": "390",
+              "dataType": "LReal"
+            },
+            {
               "name": "IMM4.UniqueId",
               "id": "401",
               "dataType": "LReal"
@@ -530,16 +570,6 @@ export const opcuaservermetadata = {
               "name": "IMM4.MaterialDescription",
               "id": "407",
               "dataType": "String"
-            },
-            {
-              "name": "IMM4.ScreapBarcode",
-              "id": "485",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM4.ScreapReason",
-              "id": "408",
-              "dataType": "LReal"
             },
             {
               "name": "IMM4.Energy.ShiftkWh",
@@ -922,6 +952,36 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
+              "name": "IMM4.Production.shiftTotalpart",
+              "id": "485",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM4.Production.shiftTotalkg",
+              "id": "486",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM4.Production.oeeHour",
+              "id": "487",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM4.Production.oeeShift",
+              "id": "488",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM4.ScreapBarcode",
+              "id": "489",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM4.ScreapReason",
+              "id": "490",
+              "dataType": "LReal"
+            },
+            {
               "name": "IMM5.UniqueId",
               "id": "501",
               "dataType": "LReal"
@@ -955,16 +1015,6 @@ export const opcuaservermetadata = {
               "name": "IMM5.MaterialDescription",
               "id": "507",
               "dataType": "String"
-            },
-            {
-              "name": "IMM5.ScreapBarcode",
-              "id": "582",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM5.ScreapReason",
-              "id": "508",
-              "dataType": "LReal"
             },
             {
               "name": "IMM5.Energy.ShiftkWh",
@@ -1332,6 +1382,36 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
+              "name": "IMM5.Production.shiftTotalpart",
+              "id": "582",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM5.Production.shiftTotalkg",
+              "id": "583",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM5.Production.oeeHour",
+              "id": "584",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM5.Production.oeeShift",
+              "id": "585",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM5.ScreapBarcode",
+              "id": "586",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM5.ScreapReason",
+              "id": "587",
+              "dataType": "LReal"
+            },
+            {
               "name": "IMM6.UniqueId",
               "id": "601",
               "dataType": "LReal"
@@ -1365,16 +1445,6 @@ export const opcuaservermetadata = {
               "name": "IMM6.MaterialDescription",
               "id": "607",
               "dataType": "String"
-            },
-            {
-              "name": "IMM6.ScreapBarcode",
-              "id": "662",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM6.ScreapReason",
-              "id": "608",
-              "dataType": "LReal"
             },
             {
               "name": "IMM6.Energy.ShiftkWh",
@@ -1642,6 +1712,36 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
+              "name": "IMM6.Production.shiftTotalpart",
+              "id": "662",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM6.Production.shiftTotalkg",
+              "id": "663",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM6.Production.oeeHour",
+              "id": "664",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM6.Production.oeeShift",
+              "id": "665",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM6.ScreapBarcode",
+              "id": "666",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM6.ScreapReason",
+              "id": "667",
+              "dataType": "LReal"
+            },
+            {
               "name": "IMM7.UniqueId",
               "id": "701",
               "dataType": "LReal"
@@ -1675,16 +1775,6 @@ export const opcuaservermetadata = {
               "name": "IMM7.MaterialDescription",
               "id": "707",
               "dataType": "String"
-            },
-            {
-              "name": "IMM7.ScreapBarcode",
-              "id": "762",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM7.ScreapReason",
-              "id": "708",
-              "dataType": "LReal"
             },
             {
               "name": "IMM7.Energy.ShiftkWh",
@@ -1952,6 +2042,36 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
+              "name": "IMM7.Production.shiftTotalpart",
+              "id": "762",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM7.Production.shiftTotalkg",
+              "id": "763",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM7.Production.oeeHour",
+              "id": "764",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM7.Production.oeeShift",
+              "id": "765",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM7.ScreapBarcode",
+              "id": "766",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM7.ScreapReason",
+              "id": "767",
+              "dataType": "LReal"
+            },
+            {
               "name": "IMM8.UniqueId",
               "id": "801",
               "dataType": "LReal"
@@ -1985,16 +2105,6 @@ export const opcuaservermetadata = {
               "name": "IMM8.MaterialDescription",
               "id": "807",
               "dataType": "String"
-            },
-            {
-              "name": "IMM8.ScreapBarcode",
-              "id": "874",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM8.ScreapReason",
-              "id": "808",
-              "dataType": "LReal"
             },
             {
               "name": "IMM8.Energy.ShiftkWh",
@@ -2322,6 +2432,36 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
+              "name": "IMM8.Production.shiftTotalpart",
+              "id": "874",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM8.Production.shiftTotalkg",
+              "id": "875",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM8.Production.oeeHour",
+              "id": "876",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM8.Production.oeeShift",
+              "id": "877",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM8.ScreapBarcode",
+              "id": "878",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM8.ScreapReason",
+              "id": "879",
+              "dataType": "LReal"
+            },
+            {
               "name": "IMM9.UniqueId",
               "id": "901",
               "dataType": "LReal"
@@ -2359,16 +2499,6 @@ export const opcuaservermetadata = {
             {
               "name": "IMM9.Weight",
               "id": "908",
-              "dataType": "LReal"
-            },
-            {
-              "name": "IMM9.ScreapBarcode",
-              "id": "977",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM9.ScreapReason",
-              "id": "909",
               "dataType": "LReal"
             },
             {
@@ -2697,13 +2827,163 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
-              "name": "IMM9.Secondary.QualityCheckBarcode",
+              "name": "IMM9.Production.shiftTotalpart",
               "id": "975",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM9.Production.shiftTotalkg",
+              "id": "976",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM9.Production.oeeHour",
+              "id": "977",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM9.Production.oeeShift",
+              "id": "978",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM9.ScreapBarcode",
+              "id": "979",
               "dataType": "String"
             },
             {
-              "name": "IMM9.Secondary.QualityCheckReason",
-              "id": "976",
+              "name": "IMM9.ScreapReason",
+              "id": "980",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QcReadTime",
+              "id": "9081",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QcBarcode",
+              "id": "9082",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QcResult",
+              "id": "9083",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QcReason",
+              "id": "9084",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC1",
+              "id": "9085",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC2",
+              "id": "9086",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC3",
+              "id": "9087",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC4",
+              "id": "9088",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC5",
+              "id": "9089",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC6",
+              "id": "9090",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC7",
+              "id": "9091",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC8",
+              "id": "9092",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC9",
+              "id": "9093",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC10",
+              "id": "9094",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC11",
+              "id": "9095",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC12",
+              "id": "9096",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC13",
+              "id": "9097",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC14",
+              "id": "9098",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC15",
+              "id": "9099",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC16",
+              "id": "9100",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC17",
+              "id": "9101",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC18",
+              "id": "9102",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC19",
+              "id": "9103",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC20",
+              "id": "9104",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC21",
+              "id": "9105",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM9.QualityCheckData.QC22",
+              "id": "9106",
               "dataType": "String"
             },
             {
@@ -2744,16 +3024,6 @@ export const opcuaservermetadata = {
             {
               "name": "IMM10.Weight",
               "id": "1008",
-              "dataType": "LReal"
-            },
-            {
-              "name": "IMM10.ScreapBarcode",
-              "id": "1077",
-              "dataType": "String"
-            },
-            {
-              "name": "IMM10.ScreapReason",
-              "id": "1009",
               "dataType": "LReal"
             },
             {
@@ -3082,16 +3352,165 @@ export const opcuaservermetadata = {
               "dataType": "LReal"
             },
             {
-              "name": "IMM10.Secondary.QualityCheckBarcode",
+              "name": "IMM10.Production.shiftTotalpart",
               "id": "1075",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM10.Production.shiftTotalkg",
+              "id": "1076",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM10.Production.oeeHour",
+              "id": "1077",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM10.Production.oeeShift",
+              "id": "1078",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM10.ScreapBarcode",
+              "id": "1079",
               "dataType": "String"
             },
             {
-              "name": "IMM10.Secondary.QualityCheckReason",
-              "id": "1076",
+              "name": "IMM10.ScreapReason",
+              "id": "1080",
+              "dataType": "LReal"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QcReadTime",
+              "id": "1081",
               "dataType": "String"
-            }
-
+            },
+            {
+              "name": "IMM10.QualityCheckData.QcBarcode",
+              "id": "1082",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QcResult",
+              "id": "1083",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QcReason",
+              "id": "1084",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC1",
+              "id": "1085",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC2",
+              "id": "1086",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC3",
+              "id": "1087",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC4",
+              "id": "1088",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC5",
+              "id": "1089",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC6",
+              "id": "1090",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC7",
+              "id": "1091",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC8",
+              "id": "1092",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC9",
+              "id": "1093",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC10",
+              "id": "1094",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC11",
+              "id": "1095",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC12",
+              "id": "1096",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC13",
+              "id": "1097",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC14",
+              "id": "1098",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC15",
+              "id": "1099",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC16",
+              "id": "1100",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC17",
+              "id": "1101",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC18",
+              "id": "1102",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC19",
+              "id": "1103",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC20",
+              "id": "1104",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC21",
+              "id": "1105",
+              "dataType": "String"
+            },
+            {
+              "name": "IMM10.QualityCheckData.QC22",
+              "id": "1106",
+              "dataType": "String"
+            },
           ]
         }
       ]

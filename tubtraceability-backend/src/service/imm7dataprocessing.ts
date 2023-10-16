@@ -7,6 +7,7 @@ import { IPrintData, formatPrintCommand, inkjetResetCommand } from './printerser
 import { imm7, imm7Reset } from '../dataset/imm7'
 import moment from 'moment-timezone';
 import opcuaserver from "./opcuaserver"
+
 let uniqueId: number
 let inkjetPrinter: TCPClient
 let labelPrinter: TCPClient
@@ -84,8 +85,7 @@ const imm7DataProcessing = {
 
             // Check barcode
             if (imm7.data.part.barcode !== imm7.datamatrix) {
-                logger.info('Barcode read is failed. Print request is sent to label printer')
-                imm7.data.part.barcode = 'ReadError'
+                logger.info(`IMM7 Barcode read is failed. Datamatrix: ${imm7.datamatrix} Barcode: ${imm7.data.part.barcode} Print request is sent to LABEL7 printer`)                
                 labelPrinter.send(labelCommand)
             }
 
@@ -94,10 +94,12 @@ const imm7DataProcessing = {
 
             // Send Data to MES
             opcuaserver.publishImm7(imm7)
+
             // Reset OPC UA Data
-            setTimeout(() => {
-                opcuaserver.publishImm7(imm7Reset)
-            }, 2000);
+            // setTimeout(() => {
+            //     opcuaserver.publishImm7(imm7Reset)
+            // }, 2000);
+
             // Reset Barcode
             imm7.data.part.barcode = ''
 
@@ -114,16 +116,16 @@ export default imm7DataProcessing
 
 function startTimer() {
     timer = setTimeout(() => {
-        logger.info('Barcode reading timeout')
+        logger.info('IMM7 Barcode reading timeout')
         const inactiveTime = getTimeDifferenceInSeconds(imm7?.data?.part?.lastCycleEndTime)
         const isMachineActive = (inactiveTime < 300 ? true : false) || false
 
         if (isMachineActive) {
-            logger.info('Machine is running')
+            logger.info('IMM7 is running')
             imm7DataProcessing.startDataProcessing()
         }
         else {
-            logger.info('Machine is not running')
+            logger.info('IMM7 is not running')
             inkjetPrinter.send(inkjetResetCommand)
             process = false
             resetTimer()

@@ -36,7 +36,7 @@ class MQTTClient {
       if (error) {
         logger.error('Error publishing message:', error)
       } else {
-        logger.info(`Published to topic: ${topic}, message: ${data}`)
+        logger.info(`Published to topic: ${topic}`)
       }
     })
   }

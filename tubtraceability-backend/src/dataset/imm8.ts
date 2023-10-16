@@ -1,4 +1,4 @@
-import {IIMM} from './common'
+import { IIMM } from './common'
 export const imm8: IIMM = {
     uniqueid: 0,
     imm: 'IMM8',
@@ -89,6 +89,14 @@ export const imm8: IIMM = {
             energyMoldHeating: '558',
         },
         secondary: {
+        },
+        production: {
+            shiftTotalpart: '748',
+            shiftTotalkg: '749',
+            oeeHour: '750',
+            oeeShift: '751'
+        },
+        qualitycheckdata: {
         }
     },
     data: {
@@ -176,6 +184,14 @@ export const imm8: IIMM = {
             energyMoldHeating: 0,
         },
         secondary: {
+        },
+        production: {
+            shiftTotalpart: 0,
+            shiftTotalkg: 0,
+            oeeHour: 0,
+            oeeShift: 0
+        },
+        qualitycheckdata: {
         }
     },
 }

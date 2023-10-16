@@ -1,0 +1,89 @@
+@import "../../styles/variables.scss";
+
+.processTable {
+
+  .dataGrid {
+    background: rgba($color: #ffffff, $alpha: 0.0);
+    color: white;
+    border: 10px solid #000028;
+    border-radius: 1%;    
+    text-align: center;
+
+    .MuiDataGrid-toolbarContainer {
+      flex-direction: row-reverse;      
+    }
+
+    .MuiDataGrid-cell{
+      border-top: 5px solid #000028;
+      border-bottom: 5px solid #000028;
+    }
+
+    .MuiDataGrid-columnHeaders {
+      border-bottom: 5px solid #000028;
+      border-radius: 1%;
+    }
+
+    .MuiDataGrid-footerContainer{
+      border-top: 5px solid #000028;
+      border-radius: 1%;
+    }
+
+    .MuiTablePagination-displayedRows{
+      color: white
+    }
+    
+    .MuiSvgIcon-root{
+      color: white;
+    }
+
+    .MuiInputBase-input{
+      color: white;
+    }
+   .MuiButton-root{
+    color: white;
+   }
+
+
+
+    img {
+      width: 32px;
+      height: 32px;
+      // border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .action {
+      display: flex;
+      gap: 15px;
+
+      img {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+
+
+/* processTable.scss */
+.green-bg {
+  background-color: $main-green; /* Change this to your desired green color */
+  animation: flashGreen 2s infinite alternate;
+}
+
+.red-bg {
+  background-color: $main-red; /* Change this to your desired red color */
+  animation: flashRed 2s infinite alternate;
+}
+
+@keyframes flashGreen {
+  0% { background-color: $main-green; }
+  100% { background-color: transparent; }
+}
+
+@keyframes flashRed {
+  0% { background-color: $main-red; }
+  100% { background-color: transparent; }
+}
+
+}
