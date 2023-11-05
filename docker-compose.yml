@@ -17,35 +17,35 @@ services:
   #   volumes:
   #     - ./tubtraceability-database/init.sql:/docker-entrypoint-initdb.d/init.sql
 
-  tubtraceability-backend:
-    image: tubtraceability-backend
-    build: ./tubtraceability-backend
-    container_name: tubtraceability-backend
-    ports:
-      - 3000:3000
-    environment:
-      - TZ=Europe/Istanbul
-    networks:
-      - "proxy-redirect"
-    mem_limit: 2048mb
-    volumes:
-      - './publish/:/publish/'
-      - './cfg-data/:/cfg-data/'
-      - './tubtraceability-backend-logs/:/app/dist/logs'
-
-
-  # tubtraceability_frontend:
-  #   image: tubtraceability-frontend
-  #   build: ./tubtraceability-frontend
-  #   container_name: tubtraceability-frontend
+  # tubtraceability-backend:
+  #   image: tubtraceability-backend
+  #   build: ./tubtraceability-backend
+  #   container_name: tubtraceability-backend
   #   ports:
-  #     - 3001:3001
+  #     - 3000:3000
+  #   environment:
+  #     - TZ=Europe/Istanbul
   #   networks:
   #     - "proxy-redirect"
-  #   mem_limit: 1024mb
+  #   mem_limit: 2048mb
   #   volumes:
   #     - './publish/:/publish/'
   #     - './cfg-data/:/cfg-data/'
+  #     - './tubtraceability-logs/:/app/dist/logs'
+
+
+  tubtraceability_frontend:
+    image: tubtraceability-frontend
+    build: ./tubtraceability-frontend
+    container_name: tubtraceability-frontend
+    ports:
+      - 3001:3001
+    networks:
+      - "proxy-redirect"
+    mem_limit: 1024mb
+    volumes:
+      - './publish/:/publish/'
+      - './cfg-data/:/cfg-data/'
 
 
 networks:

@@ -466,6 +466,7 @@ function setImmData(message: IMessage) {
     const imm9ScrapBarcode = message.vals.find(obj => obj.id === imm9.meta.scrap.scrapBarcode)
     const imm9MachineStatus = message.vals.find(obj => obj.id === imm9.meta.part.machineStatus)
     const imm9QcReadTime = message.vals.find(obj => obj.id === imm9.meta.qualitycheckdata.qcReadTime)
+    const imm9Weight = message.vals.find(obj => obj.id === imm9.meta.part.weight)
 
 
     if (imm9LastsCycleEndTime) {
@@ -527,6 +528,12 @@ function setImmData(message: IMessage) {
             imm9.data.qualitycheckdata.qcResult = ''
             imm9.data.qualitycheckdata.qcReason = ''
         }, 4000)
+    }
+
+    if (imm9Weight) {
+        setTimeout(() => {
+            opcuaserver.publishImm9(imm9)
+        }, 1000)
     }
 
     const imm10LastsCycleEndTime = message.vals.find(obj => obj.id === imm10.meta.part.lastCycleEndTime)

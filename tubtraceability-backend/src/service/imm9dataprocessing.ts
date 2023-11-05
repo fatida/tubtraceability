@@ -93,7 +93,7 @@ const imm9DataProcessing = {
             crateProcessRecord(imm9)
 
             // Send Data to MES
-            opcuaserver.publishImm9(imm9)
+            // opcuaserver.publishImm9(imm9)
 
             // Reset OPC UA Data
             // setTimeout(() => {
